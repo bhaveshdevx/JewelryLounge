@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jewelry Lounge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee2b8c",
+                        "background-light": "#f8f6f7",
+                        "background-dark": "#221019",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary selection:text-white">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-slate-900 shadow-2xl">
+<header class="sticky top-0 z-50 flex items-center justify-between bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 py-2 border-b border-slate-100 dark:border-slate-800 h-12">
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined !text-2xl">diamond</span>
+<span class="ml-2 font-bold text-lg tracking-tight text-slate-900 dark:text-white hidden sm:block">Jewelry Lounge</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="flex items-center justify-center p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined !text-[20px]">search</span>
+</button>
+<button class="relative flex items-center justify-center p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined !text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-primary ring-1 ring-white dark:ring-slate-900"></span>
+</button>
+</div>
+</header>
+<div class="w-full overflow-x-auto pb-2 pt-3 no-scrollbar">
+<div class="flex items-start gap-4 px-4 min-w-max">
+<div class="flex flex-col items-center gap-1.5 group cursor-pointer">
+<div class="p-[2px] rounded-full bg-gradient-to-tr from-primary to-orange-400 group-hover:scale-105 transition-transform duration-300">
+<div class="h-16 w-16 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 overflow-hidden relative">
+<img alt="Casual campus style student" class="h-full w-full object-cover" data-alt="Close up of a young student wearing casual jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5_fAA6XlFp8djyGLdnzQ61v-Ne-JWIib8MaI-Rs9S3LUQHghFt5hyK_NTlv4hLs0G0tJe3AIcXUr9-59vRcQil2GLCTfwZS-kNYnAvhFKUpv-P5JpSAnFDqVjTmBxnwmS9a_kQjse7XkRpy2Y3p5MXqg_E55M758IhjWq_nOYhxTUZE2W26wWMG1OTDB9udwuuy7exDLPKdBxOqOdmH_lFdtui7Am9qlzp2Gmd9vA7FUuvDcgg9WAdRoH3RbJjnqTTuXU5uP8AuE"/>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Campus</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 group cursor-pointer">
+<div class="p-[2px] rounded-full bg-gradient-to-tr from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 group-hover:scale-105 transition-transform duration-300">
+<div class="h-16 w-16 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 overflow-hidden relative">
+<img alt="Professional office wear woman" class="h-full w-full object-cover" data-alt="Woman in office attire wearing subtle jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtKfmc-Vr8wChS2z6Zmi0HP2xveDtS8dtJLHG15z608OnM4Jolbrz8c93Q9HwMNGjI5LKsKtXQEL-iZsY5DaBEJ9dXjU66RvPawELvs9GGfWVqjPaJ28AaHcaGCxrFq6ahT2cyhT7Zbek0jpdzFNQSR5uw4mFHo6jsPPwk5EkJL2nJIxmpH_8KcePoBIp7XwBSmZ9Xq5Cp7pem05NaH-ZPzmbYtc4SJfYLAkQDsOlcZehefzsU1auO2OPFE57b3DbjLM6pYCym0ZE"/>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Office</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 group cursor-pointer">
+<div class="p-[2px] rounded-full bg-gradient-to-tr from-primary to-purple-500 group-hover:scale-105 transition-transform duration-300">
+<div class="h-16 w-16 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 overflow-hidden relative">
+<img alt="Indian wedding jewelry bride" class="h-full w-full object-cover" data-alt="Detailed shot of wedding jewelry on a bride" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVmz5L3THjFbi5UjiTs_y0w-LYvjLG-ll2_FcsRzya5K2UsKpB9xj2Qu5-yGnQAlWDF6mLZgl4EvD68edHM6EW3JBSXbYyjDjxqU-vMCtSNAUotSdpWiDXttrbMKfmx5lEYHEDjZaFIL-m5MniFtlMhHLzZKu-TtlevIsPjQEoAIyPlOpBwmRvYASe2k7oN6l8chF9BHw1pB23bMvGfCwCVDm91cDCFdsdFgGB5-ctw2MxeLHEhbRqrfbtqGadFLIvxp-aVu3BJ-8"/>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Wedding</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 group cursor-pointer">
+<div class="p-[2px] rounded-full bg-gradient-to-tr from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 group-hover:scale-105 transition-transform duration-300">
+<div class="h-16 w-16 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 overflow-hidden relative">
+<img alt="Party night fashion woman" class="h-full w-full object-cover" data-alt="Woman at a party wearing statement earrings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeDUh9JnSkdBKP8FqZScIseiCm5qnnCw5QGWIso9euIeCUI0teiIwnUXaO7Hlcv2cm1Lt1KTMtKnEovcWbibvBh1j3xXn4qh9UknZTSSZH622wM8mmh0Vov3gfCtnujfrfWLllBb_V5PKPPm7Tktu2xMvcvB57-Vah_YJXYZpKoj1-xwsbD5l00Y0dy51Nt1VGlR3YofQVLQpCp3bHIW1qrZO_g0pxaXrU-XcvhVzoBOyoQzba7EKW2DCtBK89L-9pJNHN5XukQz4"/>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Party</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 group cursor-pointer">
+<div class="p-[2px] rounded-full bg-gradient-to-tr from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 group-hover:scale-105 transition-transform duration-300">
+<div class="h-16 w-16 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 overflow-hidden relative">
+<img alt="Gold necklace close up" class="h-full w-full object-cover" data-alt="Minimal gold necklace on skin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMC_2z9czs-B3oTMd4KyJMsloSJI2YMnGjkQRS5HzjEenOP36IyHaymopgVy_kE5pPT5VWYeLQ4g_LI9G-h4joGh3olMiJvtEJqM82axiJ4EmsM3OUMF1Zh2vhhxdwWincQpXvHQVJBCfIcPFr9MZm8VSgrioUQeLM1F3spmTPFWk-wKeEeCreMyxqDnH--KyIk-szwkmXGf7cIx7RwK7BK9JocJywT6l3Nq5t-UMJ5ShvOqf1wEifDa5uqe1BK8D8cdItVzRDQ_Q"/>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Gold</span>
+</div>
+</div>
+</div>
+<div class="mt-3 px-4 w-full overflow-x-auto no-scrollbar snap-x snap-mandatory flex gap-4">
+<div class="snap-center shrink-0 w-[90%] relative rounded-xl overflow-hidden aspect-[21/9] group shadow-sm">
+<img alt="Luxury jewelry collection display" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Elegant jewelry set displayed on velvet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPA2fONbwFjU-w4_Fztnvn7P_MKSHbF_sXcblAVKXe2v0-mOx8LjwcelO7ZkyIzXy0T18cx-_UaNcWaEkR1jklQqi1CjiwwWBHb_PXQF0iY0Cc4qtl30RFSOfGRjUDkq5kD49hYtFTv62j3dmU8Zv7Rfv8qys6tgyxneiSZD3gj8oAtxzGsxyViDSlCltH7MBe0gqWgofirVHIim3cb_ODQQkjpukgOh0A3WIApowOs7iXIn8NJm_z1aWGrM_G3AUbZz8HRAU3-e8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded w-fit mb-1 uppercase tracking-wide">Limited Time</span>
+<h2 class="text-white text-lg font-bold leading-tight">Today's Specials</h2>
+<p class="text-slate-200 text-xs">Up to 50% off select styles</p>
+</div>
+</div>
+<div class="snap-center shrink-0 w-[90%] relative rounded-xl overflow-hidden aspect-[21/9] group shadow-sm">
+<img alt="Model wearing silver earrings" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Side profile of a woman wearing silver hoop earrings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVDZKDAMWDV7aVTCaSfSHnmoCMEp2zpcw3v3U9lsZKSbHdTdS8CuPnKnJl1y14wsxkNuvRmloMrBzpUEobyr6o-XB3dcnNboScAkwk1hU7W0Zbj_IRfoT257e-5666fe0esn5lPuIg5Y31uOOFdY0160r6dpuiodxUO9vX3Iv3bKmxNOEoQiXhoWNzNE_YfudvfHdfZMryfv63Twv6qqf9FizayRPW8LTyFzwIa0s4YJ2vLOKptA5ffxMIYev8_mqU0fty2Q2mrOs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+<span class="bg-white text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded w-fit mb-1 uppercase tracking-wide">New In</span>
+<h2 class="text-white text-lg font-bold leading-tight">Flash Sales</h2>
+<p class="text-slate-200 text-xs">Grab them before they're gone</p>
+</div>
+</div>
+</div>
+<div class="flex gap-2 px-4 py-4 overflow-x-auto no-scrollbar">
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-full bg-primary text-white text-xs font-medium transition-transform active:scale-95 shadow-md shadow-primary/20">
+                Under ₹499
+            </button>
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium border border-slate-200 dark:border-slate-700 transition-colors hover:bg-slate-200 dark:hover:bg-slate-700">
+                Trending
+            </button>
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium border border-slate-200 dark:border-slate-700 transition-colors hover:bg-slate-200 dark:hover:bg-slate-700">
+                New Arrivals
+            </button>
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium border border-slate-200 dark:border-slate-700 transition-colors hover:bg-slate-200 dark:hover:bg-slate-700">
+                Best Sellers
+            </button>
+</div>
+<div class="px-4 pb-20">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Just For You</h3>
+<a class="text-xs font-medium text-primary hover:text-primary/80" href="#">View All</a>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="group relative flex flex-col gap-2">
+<div class="aspect-[3/4] w-full overflow-hidden rounded-lg bg-slate-100 relative">
+<img alt="Gold pendant necklace" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Gold pendant necklace on a plain background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT375_lHBGeGLuyGwQhaMsXxx3uj994SuOiyaLDIPf9LxFBd-nmwfXrl0ppgSVoXuE_EEXNipmGQO63NEB8OUTl5x_aOf-BcQDiDfB8T6_jWB5tE2I7PRyocp_2HbFS9Yb8WjU7A_m_uWLXjGx0SVNyda_YU47srIM8N9Ny8kMtinhvP3cc_SV8sGeWms7IPXuoEyKUXwobiWKepbdvdVy-0qtzFDvfWkJZuVDCObuxGNg0tptenRjz0-SRkvsBfvHKAGiN14s21Y"/>
+<button class="absolute top-2 right-2 p-1.5 rounded-full bg-white/80 backdrop-blur-sm text-slate-400 hover:text-red-500 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-black/60 backdrop-blur-md px-1.5 py-0.5 rounded text-[10px] font-medium text-white">
+                            Best Seller
+                        </div>
+</div>
+<div class="flex flex-col gap-0.5">
+<h4 class="text-xs font-semibold text-slate-900 dark:text-white truncate">Rose Gold Layered Chain</h4>
+<div class="flex items-center gap-1.5">
+<p class="text-sm font-bold text-slate-900 dark:text-white">₹399</p>
+<p class="text-[10px] text-slate-500 line-through">₹699</p>
+<p class="text-[10px] text-green-600 font-medium">40% Off</p>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col gap-2">
+<div class="aspect-[3/4] w-full overflow-hidden rounded-lg bg-slate-100 relative">
+<img alt="Silver hoop earrings" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Pair of silver hoop earrings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY1QwOrs-B5WP6szzXQSBcGlpRhmYq3HX4ZdR3-kH9_6XV8TgEjgFlqqz_L0VgoTrNp8O-1OifAoI7HuDhpsURlxzoIa5qlBrSL53vcRrHUHa_pX75VW_hYSf-dkabiY7F7k_ycBRDre61CKfIZnAb349WhdFVk3XuHkeucHE4xFLnTMTe5MGAwu4gspjC5LKffMSGm2qY51p-NGcqiR3Qp0pMz3g2QixwSgTpiKtQcZ4tefc1XteahoyH7ku1iYci9CgcvfytTJo"/>
+<button class="absolute top-2 right-2 p-1.5 rounded-full bg-white/80 backdrop-blur-sm text-red-500 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="flex flex-col gap-0.5">
+<h4 class="text-xs font-semibold text-slate-900 dark:text-white truncate">Sterling Silver Hoops</h4>
+<div class="flex items-center gap-1.5">
+<p class="text-sm font-bold text-slate-900 dark:text-white">₹899</p>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col gap-2">
+<div class="aspect-[3/4] w-full overflow-hidden rounded-lg bg-slate-100 relative">
+<img alt="Diamond ring" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Solitaire diamond ring in a box" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0y4Q0amuV_PeXpmTER5eEjjJEjiHHlal9PUunrrVsQbbbfdyQwaYWlQysoandnLJkQuODqnyXOdl5t32RVHXxpiqZsYIm6oJHTizxUMHVZguvWQwlNdTTfH_97OmppB_iJu1pmD3CuDd_rskGST022sC8kjX5nYfwrVg0wzH0NOmj_EACpefVzmN05wsIkih83CPLrJOdNGETOXz-ptTdIhKaFbQpvPQ-1uLxdsvw9r4Az1E93G3cGqS8txZv_6wj4l4XN3Zs8J8"/>
+<button class="absolute top-2 right-2 p-1.5 rounded-full bg-white/80 backdrop-blur-sm text-slate-400 hover:text-red-500 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+</div>
+<div class="flex flex-col gap-0.5">
+<h4 class="text-xs font-semibold text-slate-900 dark:text-white truncate">Crystal Solitaire Ring</h4>
+<div class="flex items-center gap-1.5">
+<p class="text-sm font-bold text-slate-900 dark:text-white">₹499</p>
+<p class="text-[10px] text-slate-500 line-through">₹999</p>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col gap-2">
+<div class="aspect-[3/4] w-full overflow-hidden rounded-lg bg-slate-100 relative">
+<img alt="Pearl bracelet" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Elegant pearl bracelet on wrist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJxC4IAG1iGx-6ppSWbP3qtdOdXnUvDR_E7-gZY8ClwVlZlwxFDWbktYGwJxWzC0acdxZTA1vdxHPBmzIgK3k4doAxoydzoLAAJtAPF1aCp0r41BI9S5cbtdZ0iIN5FyIUNP3gz3n56tzagqltaycPQBiTatABXWTN2Gl5dgkdCTHpuQtVvH4z6SBZ9dIj2WFOOx2t3EIF3rvDbplf6WZC6Y7uwLi7xa2QDOHgree2mglw7gmTyZMCdBU_basXva4cIfGCCSekMZQ"/>
+<button class="absolute top-2 right-2 p-1.5 rounded-full bg-white/80 backdrop-blur-sm text-slate-400 hover:text-red-500 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-primary/90 backdrop-blur-md px-1.5 py-0.5 rounded text-[10px] font-medium text-white">
+                            New
+                        </div>
+</div>
+<div class="flex flex-col gap-0.5">
+<h4 class="text-xs font-semibold text-slate-900 dark:text-white truncate">Vintage Pearl Bracelet</h4>
+<div class="flex items-center gap-1.5">
+<p class="text-sm font-bold text-slate-900 dark:text-white">₹1,299</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="fixed bottom-0 left-0 right-0 z-50 flex w-full max-w-md mx-auto items-center justify-around border-t border-slate-100 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg px-2 pb-5 pt-3 h-16 shadow-[0_-5px_10px_rgba(0,0,0,0.02)]">
+<a class="flex flex-col items-center justify-center gap-0.5 text-primary w-14" href="#">
+<span class="material-symbols-outlined !text-[22px]" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[9px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-primary transition-colors w-14" href="#">
+<span class="material-symbols-outlined !text-[22px]">feed</span>
+<span class="text-[9px] font-medium">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-primary transition-colors w-14" href="#">
+<span class="material-symbols-outlined !text-[22px]">shopping_cart</span>
+<span class="text-[9px] font-medium">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-primary transition-colors w-14" href="#">
+<span class="material-symbols-outlined !text-[22px]">person</span>
+<span class="text-[9px] font-medium">Profile</span>
+</a>
+</nav>
+</div>
+
+</body></html>

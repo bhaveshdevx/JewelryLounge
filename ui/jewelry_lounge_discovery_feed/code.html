@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jewelry Lounge Discovery Feed</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#ec1337",
+                "background-light": "#f8f6f6",
+                "background-dark": "#221013",
+              },
+              fontFamily: {
+                "display": ["Plus Jakarta Sans"]
+              },
+              borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Gradient for text readability over video */
+        .overlay-gradient {
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 overflow-hidden h-screen w-full relative">
+<!-- Main Container: Simulates the phone screen area -->
+<div class="relative h-full w-full flex flex-col justify-between">
+<!-- Background Video/Image Layer -->
+<!-- In a real app, this would be a <video> tag. Using an image placeholder as per instructions. -->
+<div class="absolute inset-0 z-0 h-full w-full bg-cover bg-center" data-alt="Model wearing gold jewelry outdoors" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZl_HSbfU5YPTmh0YnvOnvf0kCjxS91x0XNDuJtvOgVyuRsSdqWGfCLRNali_W-AxQilGL567i-8ZkbvPBnQOWu7_Q0mlR85vV3tMej3xwWxoBVhom58zx_L-IWmR89rGsBf7UKmN2EPf4wQIWax-0y0tsV0UGibPkSuWk-G5wqVi0kJ4TZcuOTQbmHlUStZtBtZQaDT19D7VHH690wlh6RZ8L0bZZvCNUk9_4r8MWtd7MPQU_Oyic2D0nM28_4XAUF4nh3q_eMh8');">
+<!-- Dark Overlay for better text contrast -->
+<div class="absolute inset-0 bg-black/10"></div>
+<div class="absolute inset-x-0 bottom-0 h-1/2 overlay-gradient"></div>
+</div>
+<!-- Top Header Overlay -->
+<div class="relative z-10 flex items-center justify-between px-4 pt-12 pb-4 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-white" style="font-size: 28px;">diamond</span>
+<span class="text-white font-bold text-lg tracking-tight drop-shadow-md">Jewelry Lounge</span>
+</div>
+<!-- Following | For You Switch -->
+<div class="flex items-center gap-4 text-white/70 font-medium text-base">
+<button class="hover:text-white transition-colors">Following</button>
+<div class="w-[1px] h-4 bg-white/40"></div>
+<button class="text-white font-bold border-b-2 border-primary pb-0.5">For You</button>
+</div>
+<!-- Spacer to balance layout (search icon) -->
+<button class="text-white p-2">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+<!-- Main Content Area (Middle) -->
+<div class="relative z-10 flex-1 flex flex-row items-end pb-[100px] px-4">
+<!-- Bottom Left Info -->
+<div class="flex-1 flex flex-col gap-2 mb-20 pr-12 text-white">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Influencer profile picture smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeORrCM0Z22WYe0N4BMQFuMCuJesiwxHUSzLQs_o_6zdt2RP-cICmIi6_TnA4FnOUlGwU7ZNcI7JqiHAMBiSMVte3f9TgTFA7XIW8t8mZHFyB097SXT3ZGQkhZd5eOs5QR_h9AUXDpYbUb_yR0z3dw9S9kkNINn856p6u8RlHZtyxsDsnyDuTrXNxel6AkobaC1P3Fqgi95aIBwpPVUFgZF_QR3T87BZ-udANeRcHkXlZ0jCGQaLLSUFRlGJk0iZgQTLmJH2n2chc"/>
+</div>
+<div class="flex flex-col">
+<h3 class="font-bold text-base leading-none">@jewelry_influencer</h3>
+<span class="text-xs text-white/80">Fashion &amp; Style</span>
+</div>
+<button class="ml-2 px-3 py-1 bg-primary/90 text-white text-xs font-bold rounded-full border border-white/20 backdrop-blur-sm">
+                        Follow
+                    </button>
+</div>
+<p class="text-sm leading-snug drop-shadow-sm font-normal text-slate-100">
+                    Obsessed with this rose gold layering! Perfect for brunch dates ✨ <span class="font-bold text-primary">#jewelry #styling #rosegold</span>
+</p>
+<div class="flex items-center gap-2 text-xs text-white/80 mt-1">
+<span class="material-symbols-outlined text-[16px]">music_note</span>
+<div class="marquee whitespace-nowrap overflow-hidden w-32">
+<span>Original Audio - Jewelry Lounge Official • </span>
+</div>
+</div>
+</div>
+<!-- Right Sidebar (Actions) -->
+<div class="flex flex-col gap-6 items-center mb-24 pb-2">
+<div class="flex flex-col items-center gap-1 group">
+<button class="w-12 h-12 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-transform active:scale-90 border border-white/10">
+<span class="material-symbols-outlined text-white fill-current" style="font-variation-settings: 'FILL' 1; color: #ec1337;">favorite</span>
+</button>
+<span class="text-white text-xs font-medium drop-shadow-md">1.2k</span>
+</div>
+<div class="flex flex-col items-center gap-1 group">
+<button class="w-12 h-12 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-transform active:scale-90 border border-white/10 hover:bg-black/30">
+<span class="material-symbols-outlined text-white">bookmark</span>
+</button>
+<span class="text-white text-xs font-medium drop-shadow-md">450</span>
+</div>
+<div class="flex flex-col items-center gap-1 group">
+<button class="w-12 h-12 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-transform active:scale-90 border border-white/10 hover:bg-black/30">
+<span class="material-symbols-outlined text-white">chat_bubble</span>
+</button>
+<span class="text-white text-xs font-medium drop-shadow-md">86</span>
+</div>
+<div class="flex flex-col items-center gap-1 group">
+<button class="w-12 h-12 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-transform active:scale-90 border border-white/10 hover:bg-black/30">
+<span class="material-symbols-outlined text-white transform -scale-x-100">reply</span>
+</button>
+<span class="text-white text-xs font-medium drop-shadow-md">Share</span>
+</div>
+<!-- Mute Toggle -->
+<button class="mt-4 w-8 h-8 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined text-white text-[18px]">volume_off</span>
+</button>
+</div>
+</div>
+<!-- Shop The Look Card (Floating above Nav) -->
+<div class="absolute bottom-[90px] left-4 right-4 z-20">
+<div class="bg-white/80 backdrop-blur-md border border-white/40 shadow-lg rounded-xl p-3 flex items-center gap-3 animate-in slide-in-from-bottom-5 duration-500">
+<div class="w-12 h-12 rounded-lg bg-slate-100 shrink-0 overflow-hidden">
+<img alt="Product Thumbnail" class="w-full h-full object-cover" data-alt="Close up of gold necklace jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtQawkVmi_L80-WbBGF0NzXTt7sFg1qUiQrzfIlH6q3yUbAAxplzkr4Jp8qMX5cz5bWt25HX_QrzyApjWDDaaJiDQR8k3BXs7S8giL8PJ-4IOBTrFr8v1Z61AQdAjPe3frLog3C9UjhjDAyiVBEPbF5gQAh2sPs2TsWvLqF-qOgxzNk9riksR266pBkhjKtuct1IpVCpYVDWzVE2nfadR7SlZUcu2km03FZevGxE-AS4GSpjl1qnwFQqvTEh0xiMDSr7ckkJuUXZA"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-slate-900 truncate">Rose Gold Layered Chain</h4>
+<p class="text-xs text-slate-600">Free Delivery</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-sm font-bold text-slate-900">₹599</span>
+<button class="bg-primary hover:bg-red-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-sm transition-colors">
+                        Buy Now
+                    </button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="relative z-30 flex h-auto w-full flex-col bg-white border-t border-[#f4f0f1] shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+<div class="flex gap-2 px-4 pb-6 pt-3"> <!-- Increased pb for iOS home indicator area -->
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<div class="group-hover:text-primary flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">home</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-[0.015em]">Home</p>
+</a>
+<!-- Active State -->
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<div class="text-primary flex h-8 items-center justify-center relative">
+<span class="material-symbols-outlined text-[28px] fill-current" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+</div>
+<p class="text-[10px] font-bold leading-normal tracking-[0.015em]">Feed</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<div class="group-hover:text-primary flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-[0.015em]">Shop</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<div class="group-hover:text-primary flex h-8 items-center justify-center relative">
+<span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+<!-- Cart Badge -->
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-[0.015em]">Cart</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<div class="group-hover:text-primary flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">person</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-[0.015em]">Profile</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

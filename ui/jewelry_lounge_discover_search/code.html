@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jewelry Lounge - Discover</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e8304f",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211114",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light text-slate-900 font-display antialiased selection:bg-primary/20">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden mx-auto max-w-md shadow-2xl bg-white">
+<!-- Status Bar Area (Simulated) -->
+<div class="h-10 w-full bg-white"></div>
+<!-- Top Header: Back, Title, Cart -->
+<div class="flex items-center bg-white px-4 pb-2 pt-2 justify-between sticky top-0 z-20">
+<button class="text-slate-900 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-50 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back</span>
+</button>
+<h2 class="text-slate-900 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Discover</h2>
+<div class="flex size-10 items-center justify-end">
+<button class="relative flex items-center justify-center rounded-full size-10 hover:bg-slate-50 active:scale-95 transition-transform text-slate-900">
+<span class="material-symbols-outlined" style="font-size: 24px;">shopping_cart</span>
+<span class="absolute top-1.5 right-1.5 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary ring-2 ring-white"></span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-3 bg-white sticky top-[52px] z-10">
+<label class="flex flex-col w-full h-12">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+<div class="text-slate-500 flex border-none bg-background-light items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined" style="font-size: 22px;">search</span>
+</div>
+<input autofocus="" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-slate-900 focus:outline-0 focus:ring-0 border-none bg-background-light focus:border-none h-full placeholder:text-slate-400 px-3 rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 text-base font-normal leading-normal" placeholder="Try 'Rose Gold Earrings'"/>
+<div class="flex items-center justify-center rounded-r-xl border-l-0 border-none bg-background-light pr-3">
+<button class="flex items-center justify-center rounded-full bg-slate-200/50 p-1 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+</button>
+</div>
+</div>
+</label>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto overflow-x-hidden pb-24 bg-white">
+<!-- Horizontal Filter Pills -->
+<div class="flex gap-2.5 px-4 pb-4 overflow-x-auto scrollbar-hide w-full">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-slate-900 px-4 shadow-sm active:scale-95 transition-transform">
+<span class="text-white text-sm font-medium leading-normal">All</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-background-light border border-slate-100 px-4 hover:bg-slate-100 active:scale-95 transition-transform">
+<span class="text-slate-700 text-sm font-medium leading-normal">Occasion</span>
+<span class="material-symbols-outlined text-slate-400" style="font-size: 18px;">keyboard_arrow_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-background-light border border-slate-100 px-4 hover:bg-slate-100 active:scale-95 transition-transform">
+<span class="text-slate-700 text-sm font-medium leading-normal">Type</span>
+<span class="material-symbols-outlined text-slate-400" style="font-size: 18px;">keyboard_arrow_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-background-light border border-slate-100 px-4 hover:bg-slate-100 active:scale-95 transition-transform">
+<span class="text-slate-700 text-sm font-medium leading-normal">Price</span>
+<span class="material-symbols-outlined text-slate-400" style="font-size: 18px;">keyboard_arrow_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-background-light border border-slate-100 px-4 hover:bg-slate-100 active:scale-95 transition-transform">
+<span class="text-slate-700 text-sm font-medium leading-normal">Material</span>
+<span class="material-symbols-outlined text-slate-400" style="font-size: 18px;">keyboard_arrow_down</span>
+</button>
+</div>
+<!-- Recent Searches -->
+<div class="px-4 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-slate-900 text-sm font-bold tracking-tight">Recent Searches</h3>
+<button class="text-primary text-xs font-semibold">Clear All</button>
+</div>
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-2 rounded-lg bg-background-light px-3 py-2 text-slate-600 text-sm">
+<span class="material-symbols-outlined text-slate-400" style="font-size: 16px;">history</span>
+                        Vintage Pearl Necklace
+                    </div>
+<div class="flex items-center gap-2 rounded-lg bg-background-light px-3 py-2 text-slate-600 text-sm">
+<span class="material-symbols-outlined text-slate-400" style="font-size: 16px;">history</span>
+                        Silver Rings
+                    </div>
+</div>
+</div>
+<!-- Trending Categories Title -->
+<div class="flex items-center justify-between px-4 pb-3">
+<h3 class="text-slate-900 text-lg font-bold leading-tight">Trending Categories</h3>
+<button class="text-primary text-sm font-medium flex items-center gap-0.5">
+                    View All
+                    <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</button>
+</div>
+<!-- Trending Grid -->
+<div class="grid grid-cols-2 gap-3 px-4 pb-6">
+<!-- Card 1 -->
+<div class="group relative overflow-hidden rounded-xl h-48 w-full shadow-sm hover:shadow-md transition-shadow">
+<img alt="Gold statement rings on fingers" class="absolute h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close up of gold rings on a hand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB76thteAgktTn0HNEG5GMxHNSWoL0kHsVLqeec4t4b9D5_OwoJG-bxt96nhZZLN5oq9oxH2MSRPVLcDWwXkTTp7sAd23ujYtj1F49YeW0gDnT0QcCvsS3jTp0StElUtppjSOM8B_xLu8ad6vmZcIuglKFCZ1i8-TUPrYEO440bghSw9Qchepv0nP5KqMaXl7Pfk7qMqRTd_yTa9eJsT_0fPHF0eDsJjCXVI8W9qk48se4w6iY2ELVXk_oqNs8jojh670sgEuWPp94"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 flex flex-col justify-end">
+<h4 class="text-white font-bold text-base leading-tight">Statement Rings</h4>
+<p class="text-white/80 text-xs mt-1">Starting ₹1,299</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative overflow-hidden rounded-xl h-48 w-full shadow-sm hover:shadow-md transition-shadow">
+<img alt="Thin gold necklace chains" class="absolute h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Minimalist gold necklace chains on neck" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdkOsaoWv2Zo9X7Cr60pk1RW05SM_KI9EMSIlidykWV06NGfwVdSiliA8ob1FVc7Ka2VeVSoz8kvqVLWMsvn8yrmOMTuVUbvs812wR4b80-z4EIRlS-ZueXDc7pF1cV01rrbcBGDBHeWhdRZdAxkDyS8HlaEcjDNvmFqA-LR4Nukl2k5A-PerBqCJC-3Db03ra_NuNDviOPkc7E5qRxelwoCegh8uXINAMBaEa4oY7Gltoavi_pqwGHnZfGXtOXIj6IbJ8FQXbvX4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 flex flex-col justify-end">
+<h4 class="text-white font-bold text-base leading-tight">Dainty Chains</h4>
+<p class="text-white/80 text-xs mt-1">Starting ₹899</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative overflow-hidden rounded-xl h-48 w-full shadow-sm hover:shadow-md transition-shadow">
+<img alt="Pearl earrings and accessories" class="absolute h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Elegant pearl earrings on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTwKaoNCqfbLaoB2vqmZdvIGHEJfdm1W0ld__zm7xeVf_id5X5IzcX3Eftl-rG3a2qBftz7IUQjTW0q5h82iSwMmaYlQp_52xiKf8ROq5ntDg7Ec5hLGAVfAlH43VNJ4Wjk1T-nbHO6wqp4E39v5KECnVWwi1XOIyBPwqxD-KpwB0oz95xDu7grEdgOhYCOuWvgYcNlYORYw739exBQa7nfXQYTUSKXN_TnHzxHQ6hJ6ThPyZg5P0IpkcQB72ED_BStKLUzGJt_o8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 flex flex-col justify-end">
+<h4 class="text-white font-bold text-base leading-tight">Modern Pearls</h4>
+<p class="text-white/80 text-xs mt-1">New Collection</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group relative overflow-hidden rounded-xl h-48 w-full shadow-sm hover:shadow-md transition-shadow">
+<img alt="Diamond stud earrings" class="absolute h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Sparkling diamond stud earrings close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqrNsIrvDIDLjJKzdXNRxvFpYg85rsyMJTTEQtqWsfQYmWXFZj3_LttfmlIRIUcvia1dPghxq33YMNgczRT6zF-TO2nKTv2XuPJJSnQHAagbHq4aPPT8VWFkMDkXg3guMloZLbOY8FAcqAji6CeBU6pt4ooZhOrv8KGA13CvqBQgsZSHCJZbJJh8uh8L4h5vv-fZBniOMOR3tBjDCX5N4VGXQQwewTpvgUG-6ootfP5g4OEedRrPa3FdAnjkz3hETK1Mz8hkH_1Vs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 flex flex-col justify-end">
+<h4 class="text-white font-bold text-base leading-tight">Office Wear</h4>
+<p class="text-white/80 text-xs mt-1">Under ₹1499</p>
+</div>
+</div>
+</div>
+<!-- "Based on your style" Section -->
+<div class="px-4 pb-20">
+<div class="flex items-center gap-2 mb-4">
+<div class="h-6 w-1 bg-primary rounded-full"></div>
+<h3 class="text-slate-900 text-lg font-bold leading-tight">Recommended for You</h3>
+</div>
+<div class="flex gap-4 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4">
+<!-- Recommended Item 1 -->
+<div class="w-36 shrink-0 flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-xl overflow-hidden bg-gray-100">
+<img alt="Silver bracelet" class="w-full h-full object-cover" data-alt="Silver charm bracelet on wrist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPnce4zIgr8xAl2qVXZjVB0lwvfybgNx3Ylvxw-e_HQbmI9fgwOgUb-O9yeDOZcRkK8psDi50Hnfr3HYnrxM3p-K747A5cD9GHpmjT-Cc-07AyVw7kY4RFVdxQiMWJW98n8DU0c77ud2QVe6Nbx25_OibfmMBefSjjZCxmcI60dTqMrcTNiTmMm9EDHf-JzMTnyP3QvJUx3GodESfOp0THokqDCtW0n59RRS2LCncMDep7q72_s-pFpI1CyGNCcsNoPohwl7x7N10"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div>
+<p class="text-slate-900 font-semibold text-sm truncate">Silver Charm Bracelet</p>
+<p class="text-slate-500 text-xs">₹2,499</p>
+</div>
+</div>
+<!-- Recommended Item 2 -->
+<div class="w-36 shrink-0 flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-xl overflow-hidden bg-gray-100">
+<img alt="Gold hoop earrings" class="w-full h-full object-cover" data-alt="Small gold hoop earrings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZKvxIK8_OEfg9hijp7TTAERjhAuFGomaXInRQ52aUoBA1qtc1qL8T_-GFyY9UIMEQZ9Ow49Lr1_MMVcS9RrrgSV5AyBUIOubBwJiK39hclHMlGN7GcN46i5yT9aR9sUU5HRaSkdSG9L68PEdA5v1NSg0XvxcUY4FdewSHikNxAKgPQiFXNSk7oCmDdupO49jxLCsHh0ukNS29TatcukisIS_X_C1v4fL9pwoEIAxGVf5oidjem_LI4NkPVynVvi9jOEZp98G9isE"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 16px;">favorite</span>
+</button>
+</div>
+<div>
+<p class="text-slate-900 font-semibold text-sm truncate">Classic Gold Hoops</p>
+<p class="text-slate-500 text-xs">₹1,199</p>
+</div>
+</div>
+<!-- Recommended Item 3 -->
+<div class="w-36 shrink-0 flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-xl overflow-hidden bg-gray-100">
+<img alt="Rose gold ring" class="w-full h-full object-cover" data-alt="Rose gold ring with small stone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVHNLJRJuI0XYtol3_OAEghH3aJukgd7ujtUD9Ii9lUYzA1O67s-rSZykxv-O0paAwqs0HX4fMBSCDzkZazaRNXWcvW-ZVNILY8Jh2alazEkJcA2aPmNXzg9h5ct0hNPpShkB5FMf4gu6_tGCwjTATRvk81S5iezr1AHShkFdkrV6TuQx7g_d-rfG9YpQBPzGT_JyYcCHWbDlvDQU2rs5AWTMowvCJUtMyCGVdDrKYZHKvSXvTQlyFjCzNeE1pGNQ0CBRv45vTg1I"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 16px;">favorite</span>
+</button>
+</div>
+<div>
+<p class="text-slate-900 font-semibold text-sm truncate">Rose Promise Ring</p>
+<p class="text-slate-500 text-xs">₹3,999</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<div class="absolute bottom-0 w-full z-30">
+<div class="flex gap-2 border-t border-slate-100 bg-white px-4 pb-6 pt-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">home</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px; font-variation-settings: 'FILL' 1;">search</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Discover</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">favorite</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Wishlist</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">person</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Profile</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

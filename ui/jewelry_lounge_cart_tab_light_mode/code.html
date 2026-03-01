@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jewelry Lounge - Cart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e8304f",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211114",
+                        "surface": "#ffffff",
+                        "text-main": "#181112",
+                        "text-muted": "#886369",
+                        "accent-soft": "#fdf2f4",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-surface shadow-xl">
+<div class="sticky top-0 z-20 bg-surface/95 backdrop-blur-md border-b border-background-light">
+<div class="flex items-center px-4 py-3 justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xs">J</div>
+<h2 class="text-text-main text-lg font-bold leading-tight tracking-[-0.015em]">Jewelry Lounge</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center bg-transparent text-text-main hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined" style="font-size: 24px;">search</span>
+</button>
+<button class="flex items-center justify-center bg-transparent text-text-main hover:text-primary transition-colors p-1 relative">
+<span class="material-symbols-outlined" style="font-size: 24px;">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full border border-surface"></span>
+</button>
+</div>
+</div>
+<div class="px-4">
+<div class="flex justify-between w-full">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-primary pb-2 pt-2 flex-1 transition-all" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Cart (3)</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-text-muted hover:text-text-main pb-2 pt-2 flex-1 transition-all" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Wishlist</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-text-muted hover:text-text-main pb-2 pt-2 flex-1 transition-all" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Orders</p>
+</a>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto pb-40 scrollbar-hide">
+<div class="flex gap-4 bg-surface px-4 py-5 border-b border-background-light transition-colors hover:bg-background-light/30">
+<div class="flex items-start gap-4 flex-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl w-16 h-16 shadow-sm shrink-0" data-alt="Gold hoop earrings on model" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC33BuFZw0p77GtKRns9Vj58zlScVUbjCdaQzRwe4MwOcAQ1sMsBDqONQP6XG7nFZiRgQq3ug8cyb_U2Cx9QTTk2erQfyMJGkS1Hr6PRl9L07X701-wEWvcXV50pHCBNTtAd6B_4fc7eccHf3WhGJKqU1HO0vffn5u431sPYHqI1oo03MKGVbsfXstAVBwGb8gDS5MkyCJFpLIWTzRCKlxAgwimooj40WHWj1ULjhPqu7VwhIeLhE9xLPp4eHJJq4VWStzymiV-vic");'></div>
+<div class="flex flex-1 flex-col justify-between h-16">
+<div>
+<p class="text-text-main text-sm font-bold leading-tight line-clamp-1">Gold Hoop Earrings</p>
+<p class="text-text-muted text-xs font-medium mt-0.5">In Stock</p>
+</div>
+<p class="text-primary text-sm font-bold">₹499</p>
+</div>
+</div>
+<div class="shrink-0 flex items-center h-16">
+<div class="flex items-center bg-background-light rounded-lg p-0.5 h-8">
+<button class="text-text-main flex h-7 w-7 items-center justify-center rounded-md hover:bg-white shadow-sm transition-all text-lg font-medium">-</button>
+<span class="text-xs font-semibold w-6 text-center">1</span>
+<button class="text-text-main flex h-7 w-7 items-center justify-center rounded-md hover:bg-white shadow-sm transition-all text-lg font-medium">+</button>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden group">
+<div class="absolute inset-y-0 right-0 w-20 bg-primary flex items-center justify-center z-0">
+<button class="text-white flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<div class="relative z-10 flex gap-4 bg-surface px-4 py-5 border-b border-background-light -translate-x-20 shadow-[4px_0_24px_rgba(0,0,0,0.05)] transition-transform duration-300 ease-out">
+<div class="flex items-start gap-4 flex-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl w-16 h-16 shadow-sm shrink-0" data-alt="Crystal choker necklace display" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBntjj0AnAFtyq2FptEM8vkPzDMYZlsOeLjQ4FiyvuXh1gVWrpfCzycDMiMJpz7lmKkT3S0PcibIBcYcWNTMJovn8C-kUspWVt3v4RwivAdPy-keO3jh-4e3YCFX85ekGam9HXVnHlwf_wCLQtMegVkBvyTwxE5EMF7Vfy5cYNtIfpZX1gJZlFDaBw8c3EoHxyEKCRGehsAvRnxZCQDHPDPMq-1IDXHqYd4Imvt1dqOQae-2s8bUtI3Uo6m961aLDEvqJrd0IynMpE");'></div>
+<div class="flex flex-1 flex-col justify-between h-16">
+<div>
+<p class="text-text-main text-sm font-bold leading-tight line-clamp-1">Crystal Choker Necklace</p>
+<p class="text-primary text-xs font-medium mt-0.5">Low Stock</p>
+</div>
+<p class="text-primary text-sm font-bold">₹799</p>
+</div>
+</div>
+<div class="shrink-0 flex items-center h-16">
+<div class="flex items-center bg-background-light rounded-lg p-0.5 h-8">
+<button class="text-text-main flex h-7 w-7 items-center justify-center rounded-md hover:bg-white shadow-sm transition-all text-lg font-medium">-</button>
+<span class="text-xs font-semibold w-6 text-center">1</span>
+<button class="text-text-main flex h-7 w-7 items-center justify-center rounded-md hover:bg-white shadow-sm transition-all text-lg font-medium">+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-4 bg-surface px-4 py-5 border-b border-background-light transition-colors hover:bg-background-light/30">
+<div class="flex items-start gap-4 flex-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl w-16 h-16 shadow-sm shrink-0" data-alt="Silver minimalist ring" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1lefcI-bJpiKlQ4Ezey9JkA8GDHCfe_NB13N3_9Xua-EHWn8RJeP99PVMki6NXxnHDdT578GoIaFJ6d5mrj_s_ZuiQrSZXaxLS7jldghWsQmHi-BPJu95-SY32oknKn6sRPxuQOF9KAzJLQgLagx3t1dLaMzdqVl2r0DZJErMe2Gevzl1gglo8z8kahm5e36PcqEd6MD_wifHVlPePqE1vxhDeP5gnQvWNWhQUtvWL6o6KWP5DBTRU-2uDv2_8_iSJP3-4lSraK8");'></div>
+<div class="flex flex-1 flex-col justify-between h-16">
+<div>
+<p class="text-text-main text-sm font-bold leading-tight line-clamp-1">Sterling Silver Ring</p>
+<p class="text-text-muted text-xs font-medium mt-0.5">Size: 7</p>
+</div>
+<p class="text-primary text-sm font-bold">₹599</p>
+</div>
+</div>
+<div class="shrink-0 flex items-center h-16">
+<div class="flex items-center bg-background-light rounded-lg p-0.5 h-8">
+<button class="text-text-main flex h-7 w-7 items-center justify-center rounded-md hover:bg-white shadow-sm transition-all text-lg font-medium">-</button>
+<span class="text-xs font-semibold w-6 text-center">2</span>
+<button class="text-text-main flex h-7 w-7 items-center justify-center rounded-md hover:bg-white shadow-sm transition-all text-lg font-medium">+</button>
+</div>
+</div>
+</div>
+<div class="px-4 py-6">
+<h3 class="text-text-main font-bold text-sm mb-3">You might also like</h3>
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<div class="shrink-0 w-28">
+<div class="aspect-square rounded-lg bg-cover bg-center mb-2" data-alt="Pearl bracelet" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQSafpC_Gs3y7TQc0sdcOijDuR9_UoazyfyHNEWjdr5Id0yF2GQrtn73_LKvsbLY9tqVbWVqBc0PfqhxYAqasGm9MhqkZKspdYP7YQQJEULBw28LYc_v1AKDomArT_skfxC96szvklo_28iNIhAG_eBNkVyQeUvVZgg6K4NiozcI-zfbEJbQD-FTai4G5hxifeYhmoqKodH8ldhsyiPUppb5CRlZB_7kFSywuQz6YM9WT4lyaiCPh1Pjo3aJFT_NY_lz-Pqgb9GxY");'></div>
+<p class="text-xs font-medium text-text-main truncate">Pearl Bracelet</p>
+<p class="text-xs text-text-muted">₹299</p>
+</div>
+<div class="shrink-0 w-28">
+<div class="aspect-square rounded-lg bg-cover bg-center mb-2" data-alt="Rose gold pendant" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFB_-Wt4cmPUteP_qXlMZOxgTmIWatON3A4-zg4OmDvZ2NU2b_e4rwkcc6ctylM2m50cbX5prngkR8aF0BOHf0VppxFWar6NV2PCDE4hIrpDr8Ki_DCF4YrJmRnHbEDCkJkGHWiGrkdX30xiMRUqy3I1CoyGPpZ5UBTqV_jm-8owD59_enN26yAZ5e77e0-m11fEL8iS0AaOPOpd_faK5uTFi9x6TZBvgdfYuDIdySSAikzmipsgfvObrZ0byL-pAC-_ajRMeKb1w");'></div>
+<p class="text-xs font-medium text-text-main truncate">Rose Gold Pendant</p>
+<p class="text-xs text-text-muted">₹899</p>
+</div>
+<div class="shrink-0 w-28">
+<div class="aspect-square rounded-lg bg-cover bg-center mb-2" data-alt="Diamond studs" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAC2dwf0w4OCGu9Gq60CurNVmVqMtvQCp7q-zHeDrNSIAZr6ODdh5aXxl_3w6LJd5TTyE1vkUKt9yand1hcwp2fDmyULvC4MjlMEswijPbXYvlfLlYAJJNGMZcQ8FIyINAu_QGtPyK97QYrQwfmNjwcwZ_itwAJrhKWgWV0MlS2j68PB5rwZPVm5-hx11uwo23DnjDMYkiL8DWyyJGnwOipmsGK68ym69Ecab-grgbjPyDyth_cVvpzx13mjjeFsEhWTQM0BvTrhvY");'></div>
+<p class="text-xs font-medium text-text-main truncate">Diamond Studs</p>
+<p class="text-xs text-text-muted">₹1,299</p>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-[56px] left-0 right-0 z-20 bg-surface rounded-t-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-background-light p-4 space-y-3">
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<span class="text-text-muted text-xs font-medium">Subtotal</span>
+<span class="text-text-main text-sm font-bold">₹1,897</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-text-muted text-xs font-medium">Shipping</span>
+<span class="text-primary text-xs font-bold uppercase tracking-wider">Free</span>
+</div>
+<div class="h-px bg-background-light my-1 w-full"></div>
+<div class="flex justify-between items-end">
+<span class="text-text-main text-base font-bold">Total</span>
+<span class="text-primary text-lg font-bold">₹1,897</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-bold text-base py-3 rounded-lg shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                Proceed to Checkout
+                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 right-0 z-30 bg-surface border-t border-[#f4f0f1] px-4 flex justify-between items-center h-[56px]">
+<a class="flex flex-1 flex-col items-center justify-center text-text-muted hover:text-primary transition-colors group h-full" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform text-[20px]">home</span>
+<p class="text-[10px] font-medium leading-tight mt-0.5">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center text-text-muted hover:text-primary transition-colors group h-full" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform text-[20px]">storefront</span>
+<p class="text-[10px] font-medium leading-tight mt-0.5">Shop</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center text-primary h-full" href="#">
+<div class="relative">
+<span class="material-symbols-outlined fill-current text-[20px]" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+<span class="absolute -top-1 -right-1.5 bg-primary text-white text-[8px] font-bold h-3 w-3 flex items-center justify-center rounded-full border border-white">3</span>
+</div>
+<p class="text-[10px] font-bold leading-tight mt-0.5">Cart</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center text-text-muted hover:text-primary transition-colors group h-full" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform text-[20px]">person</span>
+<p class="text-[10px] font-medium leading-tight mt-0.5">Profile</p>
+</a>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jewelry Lounge - Wishlist</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#06a8f9",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1c23",
+                        "neutral-dark": "#1b2831",
+                        "neutral-border": "#2c3b44",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="flex items-center justify-between px-5 pt-12 pb-4 bg-background-light dark:bg-background-dark sticky top-0 z-20 border-b border-transparent dark:border-neutral-border">
+<button class="text-slate-900 dark:text-slate-100 flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-neutral-dark transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">menu</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-center flex-1">Jewelry Lounge</h2>
+<div class="flex size-10 items-center justify-center">
+<div class="size-8 rounded-full bg-neutral-200 dark:bg-neutral-700 overflow-hidden" data-alt="User profile avatar">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAahHJ6TAJ7jwJ5pLXHCZtgTTZVGgqXI9QqAuVz_wqM-GbAjQXuEF0QTKg8wjHD17jE8mGVkd9edWwunTFseYM0qA2VaQuQbRmesRe1qH3ulscgvZus6mMqXV0kVwRI0t46WUWt_ONQWpaYWcPnWZZgHpbi2EGPIajrpQurwL9jYD6hmAmYdRx9bO7L4We8eUzDnr6wxEpNFBAzUgpvRCH0KqizYfSMMXn2tcx58A5Wbt32JnoubA-rao9t_PRd_JmNOssUYmRy-mo"/>
+</div>
+</div>
+</header>
+<!-- Tabs Navigation -->
+<div class="sticky top-[89px] z-20 bg-background-light dark:bg-background-dark shadow-sm">
+<div class="flex border-b border-slate-200 dark:border-neutral-border px-4 justify-between">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-4 flex-1 transition-all hover:text-primary" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Cart</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Wishlist (12)</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-4 flex-1 transition-all hover:text-primary" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Orders</p>
+</a>
+</div>
+</div>
+<!-- Main Content: Product Grid -->
+<main class="flex-1 p-4 pb-24 overflow-y-auto">
+<div class="grid grid-cols-2 gap-4">
+<!-- Product Card 1 -->
+<div class="flex flex-col gap-3 group">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-neutral-200 dark:bg-neutral-dark shadow-md" data-alt="Midnight Studs jewelry product close-up">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnllwaxcmFvgmchk4GR2xVPHadYivzHMna0772Z7xnE97mmVekqsg4ZUVJ5WTr90lAUDOiybpKqgZC67vtvD8Q8kELytmNetVj6lG7H0IggVOtt-dUh1dHR7QB4VYpaXKuaZ2GYoYeVQBzDFae_oFJk6QQo-QhPPRT1JdhzNDyjzPqxsbnYy3F1ohK5q8GpwHk0kR6dJsagOLNFO0-jVN7LkJHIqrjbZ3GLXQO9g2Y3e200IaY48Ibe2e5oxpg-ky6uQJvA_EMdDg");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90"></div>
+<button class="absolute top-2 right-2 p-2 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-red-500/80 transition-colors z-10">
+<span class="material-symbols-outlined filled" style="font-size: 20px; font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 right-0 p-3 flex flex-col">
+<p class="text-white text-lg font-bold leading-tight mb-1">Midnight Studs</p>
+<p class="text-primary text-sm font-medium">$45.00</p>
+</div>
+</div>
+<button class="w-full h-10 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white dark:hover:text-background-dark font-bold text-sm tracking-wide transition-all flex items-center justify-center gap-2 active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 18px;">shopping_bag</span>
+                        Move to Cart
+                    </button>
+</div>
+<!-- Product Card 2 -->
+<div class="flex flex-col gap-3 group">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-neutral-200 dark:bg-neutral-dark shadow-md" data-alt="Silver Choker jewelry necklace elegant">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAARK7reV_utdBlmy9sOfT5E09XSwFnGpGWCwEU70ATOODZVPyj7Xr6p-ivLFjMN1RJg4ebHyN0nYNhjScewiqk98e9tBrYgY8QHtS6dGhxxe6dON2a9nGxkUrY_-XoHQoI12Zi3umwWJXPXfXNQUnZ1aWa9H7asy6JmpALJDKZvE3P7mXqczpLLz-RErJE5lABI-T5qV4F7ysMWact1l40iQfP4eQgG1XPQE29reUlLXatpgNxeh_d3KRd_qZvVaNvRP_Fb1DiNSM");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90"></div>
+<button class="absolute top-2 right-2 p-2 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-red-500/80 transition-colors z-10">
+<span class="material-symbols-outlined filled" style="font-size: 20px; font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 right-0 p-3 flex flex-col">
+<p class="text-white text-lg font-bold leading-tight mb-1">Silver Choker</p>
+<p class="text-primary text-sm font-medium">$89.99</p>
+</div>
+</div>
+<button class="w-full h-10 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white dark:hover:text-background-dark font-bold text-sm tracking-wide transition-all flex items-center justify-center gap-2 active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 18px;">shopping_bag</span>
+                        Move to Cart
+                    </button>
+</div>
+<!-- Product Card 3 -->
+<div class="flex flex-col gap-3 group">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-neutral-200 dark:bg-neutral-dark shadow-md" data-alt="Emerald Ring luxury jewelry closeup">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwIvai55RtOh0WDxD3pBQqj2Rvdbh9ryTpk_VTk-Zolq_NNrS41VXnR3D5xpUOd_DevPgJnVzr2otzP0YPEnbkEyJC4iWTWuyoOowwAQzpr4jf6SfuXP4TuGQqiuF9ALcufXUjBngAl7dl0RL3WkgrQvUg4CCeYjjWrx0QhGLHeoOVqLHtrXEYHMVu2DmcLRROQ__-usxltEYwCd1hwTtXnqlbQtScRvzSYBLgzSbOrYp1jJ_OWTb_UzrYtEQo_f9APxK3AmeEBQ8");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90"></div>
+<button class="absolute top-2 right-2 p-2 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-red-500/80 transition-colors z-10">
+<span class="material-symbols-outlined filled" style="font-size: 20px; font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 right-0 p-3 flex flex-col">
+<p class="text-white text-lg font-bold leading-tight mb-1">Emerald Ring</p>
+<p class="text-primary text-sm font-medium">$120.00</p>
+</div>
+</div>
+<button class="w-full h-10 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white dark:hover:text-background-dark font-bold text-sm tracking-wide transition-all flex items-center justify-center gap-2 active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 18px;">shopping_bag</span>
+                        Move to Cart
+                    </button>
+</div>
+<!-- Product Card 4 -->
+<div class="flex flex-col gap-3 group">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-neutral-200 dark:bg-neutral-dark shadow-md" data-alt="Gold Chain Bracelet delicate jewelry">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAHeUyxlr_Z-K9XQZPsvc-Gc-_0oeHTKmvaGe9dDWC4NU2Wb0MA1KPP7VagpjeVzChJAhRkPR7fAqS_SKwzVnZVgtXMaJ_-yL-cWRzQhUciTmDSLQgVxWU8GLY2ZS5PBP-P45MgP1MhoZKccvXN7FfWi7fhHiaAcu--DcRkycby7sVfR_JsvZMCjtH66zMLKxMyXvWRSX6kSUBePpaIZeLB3EnIUBjF-8NFARf72oVq4ZoNgTDLD6vsyzZom_TryXbH7ar9TfRYL-I");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90"></div>
+<button class="absolute top-2 right-2 p-2 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-red-500/80 transition-colors z-10">
+<span class="material-symbols-outlined filled" style="font-size: 20px; font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 right-0 p-3 flex flex-col">
+<p class="text-white text-lg font-bold leading-tight mb-1">Gold Link</p>
+<p class="text-primary text-sm font-medium">$65.00</p>
+</div>
+</div>
+<button class="w-full h-10 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white dark:hover:text-background-dark font-bold text-sm tracking-wide transition-all flex items-center justify-center gap-2 active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 18px;">shopping_bag</span>
+                        Move to Cart
+                    </button>
+</div>
+</div>
+<!-- End of list spacer -->
+<div class="h-12 w-full flex items-center justify-center mt-6">
+<span class="text-slate-400 dark:text-slate-600 text-xs font-medium">End of Wishlist</span>
+</div>
+</main>
+<!-- Toast Notification -->
+<div class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 animate-bounce">
+<div class="bg-primary text-white dark:text-background-dark px-6 py-3 rounded-full shadow-lg shadow-primary/20 flex items-center gap-2 backdrop-blur-md">
+<span class="material-symbols-outlined" style="font-size: 20px;">check_circle</span>
+<span class="text-sm font-bold">Moved to Cart!</span>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 dark:border-neutral-border bg-background-light dark:bg-neutral-dark/95 backdrop-blur-lg px-4 pb-safe pt-2 max-w-md mx-auto">
+<div class="flex gap-2 pb-3">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 group/nav" href="#">
+<div class="text-slate-400 dark:text-slate-500 group-hover/nav:text-primary transition-colors flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">home</span>
+</div>
+<p class="text-slate-400 dark:text-slate-500 group-hover/nav:text-primary transition-colors text-xs font-medium leading-normal">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 group/nav" href="#">
+<div class="text-slate-400 dark:text-slate-500 group-hover/nav:text-primary transition-colors flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">search</span>
+</div>
+<p class="text-slate-400 dark:text-slate-500 group-hover/nav:text-primary transition-colors text-xs font-medium leading-normal">Search</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary relative" href="#">
+<div class="absolute -top-1 right-3 size-2 bg-primary rounded-full shadow-[0_0_8px_rgba(6,168,249,0.8)]"></div>
+<div class="text-primary flex h-8 items-center justify-center">
+<span class="material-symbols-outlined filled" style="font-size: 24px; font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<p class="text-primary text-xs font-medium leading-normal">Wishlist</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 group/nav" href="#">
+<div class="text-slate-400 dark:text-slate-500 group-hover/nav:text-primary transition-colors flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">person</span>
+</div>
+<p class="text-slate-400 dark:text-slate-500 group-hover/nav:text-primary transition-colors text-xs font-medium leading-normal">Profile</p>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

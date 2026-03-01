@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Detail Overlay Dark Mode</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee2b8c",
+                        "background-light": "#f8f6f7",
+                        "background-dark": "#221019",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for clean UI */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Neon glow effect for specific elements */
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(238, 43, 140, 0.4);
+        }
+        .neon-border {
+            box-shadow: 0 0 5px rgba(238, 43, 140, 0.4), inset 0 0 5px rgba(238, 43, 140, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-black font-display antialiased overflow-hidden">
+<!-- Main Container simulating a phone screen -->
+<div class="relative mx-auto h-screen w-full max-w-md overflow-hidden bg-gray-900 dark:bg-black shadow-2xl">
+<!-- Background Image simulating the app behind the overlay -->
+<div class="absolute inset-0 z-0 opacity-50 bg-cover bg-center" data-alt="Blurred background of jewelry collection grid" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDcm5Bofzo5XjQmVsJoVmbdRT3llmrreEhDxqeAmL-Um2W6qLLEvJBpwmQahAGciTm_b9xFqqx1LTzwBdkhKrzhvQKTbGTrLthk2xblPZQbQJyXNly9kvcFwg2aABZLRMXcHWx_kXrs0y8zTqRidLEtJj_u9nLcci-mUwfCw3Bx5YGCRvVlt4W7aUwP1nFfWgOfauA7Jp70eqgTWLiRvwCTPHHOTjYOPcqyO6_aYBiCPG7VE2t0Vk1zlPTX1FGu-FaKGrFWwYqeZ44');"></div>
+<div class="absolute inset-0 z-0 bg-black/60"></div>
+<!-- Overlay / Bottom Sheet -->
+<div class="absolute bottom-0 left-0 z-10 flex h-[92vh] w-full flex-col rounded-t-[2.5rem] bg-background-light dark:bg-background-dark shadow-[0_-10px_40px_rgba(0,0,0,0.5)] overflow-hidden">
+<!-- Handle -->
+<div class="flex w-full items-center justify-center pt-4 pb-2 bg-transparent z-20 absolute top-0 left-0 right-0">
+<div class="h-1.5 w-12 rounded-full bg-slate-300/20 dark:bg-white/20 backdrop-blur-md"></div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto scrollbar-hide pb-24 relative">
+<!-- Hero Image / Visuals -->
+<div class="relative w-full aspect-[4/5] bg-slate-200 dark:bg-slate-800">
+<img alt="Model wearing neon hoop earrings" class="h-full w-full object-cover" data-alt="Close up of neon hoop earrings on model" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgYYddZObugXz8cJCiTReiSmFHTTrPtmkz3Cfdxf-7GlPOzVkssox2goLhX9SBxrUyZe4un236DgXd2d0Vd3m2HsHYLaEc5orNy2_lsK4G3_CWmkcy1AAfVDw2yLKCtYpMHY6HFf6C9l0e3sflST-9SyqMQtVW1DoAYkXVO0FytNGh_7jhg_Vp5I9VUkp9IgJhh2Qp2nDqt6hmrlcs2Ntgm8R8Hp0NT1jqKoWUMGy84lNASOl9Nds6f9ba5ndA7T7Mt9K8mgLFSas"/>
+<!-- Floating Badge -->
+<div class="absolute top-6 right-6 bg-black/40 backdrop-blur-md border border-white/10 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                        New Arrival
+                    </div>
+<!-- Image Indicators -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+<div class="h-1.5 w-6 rounded-full bg-white shadow-sm"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/40"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/40"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/40"></div>
+</div>
+</div>
+<!-- Info Section -->
+<div class="px-6 pt-6 flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">Neon Matte Hoops</h2>
+<button class="text-slate-400 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-3xl">share</span>
+</button>
+</div>
+<div class="flex items-baseline gap-3 mt-1 mb-4">
+<span class="text-2xl font-bold text-primary">$24.00</span>
+<span class="text-sm text-slate-500 line-through decoration-slate-500">$32.00</span>
+<span class="text-xs font-bold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-md">25% OFF</span>
+</div>
+<!-- Rating -->
+<div class="flex items-center gap-1 mb-6">
+<span class="material-symbols-outlined text-yellow-400 text-lg fill-1">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-lg fill-1">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-lg fill-1">star</span>
+<span class="material-symbols-outlined text-yellow-400 text-lg fill-1">star</span>
+<span class="material-symbols-outlined text-yellow-400/30 text-lg">star</span>
+<span class="text-sm text-slate-500 ml-1">(128 reviews)</span>
+</div>
+<!-- Variants / Thumbnail Strip -->
+<div class="mb-6">
+<p class="text-sm font-medium text-slate-900 dark:text-slate-200 mb-3">Select Style</p>
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="relative h-16 w-16 rounded-lg overflow-hidden ring-2 ring-primary ring-offset-2 ring-offset-background-light dark:ring-offset-background-dark flex-shrink-0">
+<img alt="Neon Pink" class="h-full w-full object-cover" data-alt="Neon pink earring thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNdV4cRA2IIll2xgetGarq0H-S7fOilxzTqQWa5GdAeyEzjb2AFuPZn1Tizi6GOPVopH4sKuw8U7NfKn5igG1jX_gvrqzEOd-3XWnCun6GFBPqSK4tH2H1ulmB0W6muT2Q1AZidO84Cps-1IetL6Gv3jkggFF9DmdQsaFVTw2h93p6zAdo9-nK80O8ZQhA_KYw-vG3fqNB85LXT_0_pgM0v_vgiQnqPrNvc6deQKkpu-l-G2-d3F6LbnvR0DT1MpbY21uKFfUW0nw"/>
+</button>
+<button class="relative h-16 w-16 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 opacity-60 hover:opacity-100 flex-shrink-0">
+<img alt="Electric Blue" class="h-full w-full object-cover" data-alt="Electric blue earring thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM2ZrITxI4jYWRrS1fsipqY1y_XLsOxpAAuEZ6Sl6en2Bpkq1OnTYuPWmdl8kGfbgJ2lvmIx6hVVQZiRk4qXcW1WHCPTWxRaDblTCj8OHgurAcTbsDyZyf18ur3eFIESH4EYvO3jaj-7NjOxNTbO23bpOyUpUyvZgcpZxrSGjB_AyowBFdxbqoLBxlespETFnnJ_c1XN4trXW1TKXFMN2HZWCBW952Kqf_ezBClwPOamBSDPLS3ebi3e8Wv7f3F1AjKV7FFfTKUqk"/>
+</button>
+<button class="relative h-16 w-16 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 opacity-60 hover:opacity-100 flex-shrink-0">
+<img alt="Silver" class="h-full w-full object-cover" data-alt="Silver earring thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHRRONtENsXISHjZMnbgEn1XjCID4RDEuMIrUn1vub0kTtjqONtTykNsTm4HSGuI9oIRj4KBqGkCgfSWzh_Fe7mRMpTi0r2PcE7mcFRsB0BSXuisJBDzebIjY1d0rVhY24sLbuoPHEx-AXHbXiUUdvNDorQ2tMFxNI4j897vYbXpeDEqlv225OZSZrx5DvK3jfPDLxxunfFU_jLRJHPK9a0yuTw3Dqr39N5V2EVbnLnewHnMJtYBfLbE2u2aI_eGUc13kKoV9ZZps"/>
+</button>
+</div>
+</div>
+<!-- Description Accordion -->
+<div class="border-t border-slate-200 dark:border-white/10 pt-4 pb-8">
+<details class="group">
+<summary class="flex cursor-pointer items-center justify-between py-2 list-none">
+<span class="text-base font-medium text-slate-900 dark:text-slate-100">Description</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</span>
+</summary>
+<div class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pt-2">
+<p class="mb-2">High-impact matte finish hoops designed for the nightlife. Lightweight, hypoallergenic surgical steel post ensures comfort all night long.</p>
+<ul class="list-disc pl-5 space-y-1 mt-2 text-slate-500 dark:text-slate-500">
+<li>Material: Recycled Acrylic &amp; Surgical Steel</li>
+<li>Diameter: 60mm</li>
+<li>Weight: 4g (Ultra Light)</li>
+</ul>
+</div>
+</details>
+<details class="group mt-2 border-t border-slate-200 dark:border-white/10 pt-2">
+<summary class="flex cursor-pointer items-center justify-between py-2 list-none">
+<span class="text-base font-medium text-slate-900 dark:text-slate-100">Shipping &amp; Returns</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</span>
+</summary>
+<div class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pt-2">
+<p>Free shipping on orders over $50. 30-day return policy.</p>
+</div>
+</details>
+</div>
+</div>
+<!-- Spacer for sticky bottom bar -->
+<div class="h-24"></div>
+</div>
+<!-- Sticky Action Zone -->
+<div class="absolute bottom-0 left-0 w-full bg-background-light dark:bg-background-dark/95 backdrop-blur-xl border-t border-slate-200 dark:border-white/10 p-5 z-30 pb-8">
+<div class="flex items-center gap-4">
+<!-- Bookmark Icon -->
+<button class="flex items-center justify-center h-14 w-14 rounded-full border-2 border-slate-200 dark:border-slate-700 bg-transparent text-slate-900 dark:text-white hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all active:scale-95 group">
+<span class="material-symbols-outlined text-2xl group-hover:fill-current">bookmark_border</span>
+</button>
+<!-- Add to Cart Button -->
+<button class="flex-1 h-14 bg-primary rounded-full flex items-center justify-center gap-2 text-white font-bold text-lg neon-glow active:scale-[0.98] transition-transform">
+<span>Add to Cart</span>
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

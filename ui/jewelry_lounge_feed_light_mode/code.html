@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jewelry Lounge Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght,FILL@200..800,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ee2b8c",
+              "background-light": "#f8f6f7",
+              "background-dark": "#221019",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "1rem", 
+              "lg": "2rem", 
+              "xl": "3rem", 
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display overflow-hidden relative h-screen w-full">
+<!-- Background Video Simulation -->
+<div class="absolute inset-0 z-0 h-full w-full bg-slate-200">
+<div class="h-full w-full bg-cover bg-center" data-alt="Model wearing gold layered necklaces in sunlight" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVG69V9FLn_5Q1vRf3uc_6AT1JCn6DDRYJ7M64vrNeH7XXEHgr9DbTaqgCdyzU8i-HwX8dNQH8WvpYHp_3jm9ClyLQ-fFkGsZnYtBGnaaX-Lg9AV3a2o4A4OyjhU3NNYPt_T8ZKM3aLFSvMS_5E__xZ6jLcOdrEnMCPLs_RKGuoNNm9RD0oMBr7QpJ4GYLCSoKdd3_KKRs_W2qCv53-Y34iqXLHh6W69a3EWWj3GBTQqO38_-X9RH-1wRrA5Mzmn2mbDIFDwWcpVE');">
+<!-- Overlay Gradient for text readability -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60"></div>
+</div>
+</div>
+<!-- Top Header Overlay -->
+<div class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 pt-12 pb-4">
+<!-- Logo Area -->
+<div class="flex items-center gap-2">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm text-white">
+<span class="material-symbols-outlined text-[20px]">diamond</span>
+</div>
+<span class="text-white font-bold text-sm tracking-wide hidden sm:block">Jewelry Lounge</span>
+</div>
+<!-- Toggle Switch -->
+<div class="flex items-center gap-4 text-white/70 font-medium text-sm">
+<span class="cursor-pointer hover:text-white transition-colors">Following</span>
+<div class="h-4 w-[1px] bg-white/40"></div>
+<span class="text-white font-bold cursor-pointer border-b-2 border-primary pb-0.5">For You</span>
+</div>
+<!-- Search Icon Placeholder -->
+<div class="flex h-8 w-8 items-center justify-center rounded-full text-white">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+</div>
+<!-- Right Sidebar Actions -->
+<div class="absolute right-4 bottom-24 z-20 flex flex-col items-center gap-6">
+<!-- Profile Picture with Plus Badge -->
+<div class="relative mb-2">
+<div class="h-12 w-12 rounded-full border-2 border-white p-0.5 overflow-hidden bg-white">
+<img alt="User Profile" class="h-full w-full rounded-full object-cover" data-alt="Close up portrait of smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYLYjhAgZjNeC0Tr2xICukpCu1EtcY4EOh0xC_yru74MgvSjzf8NVOXcZgsgBGMW-o_nwe80k6bo9k3J02GjD70SwuVDHGKTMxY7GULNWkfQC40IQum-Q6_TaB2ZDRf-2CAhYumqYR017oc7JttgN8mf3OxUY11WnI1BNZP-n4PPHLFF0OkEh4dAquXMufsHdHJrchGG0ApEINmgD4l6oVClHeG84Mr2dbHluu9KFNN57lMBXPr3CJy-0xIdq7S1c7fhUzFStcGsY"/>
+</div>
+<div class="absolute -bottom-1 left-1/2 -translate-x-1/2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined text-[14px] font-bold">add</span>
+</div>
+</div>
+<!-- Like Button -->
+<div class="flex flex-col items-center gap-1">
+<button class="group flex h-10 w-10 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm transition-transform active:scale-90">
+<span class="material-symbols-outlined text-white text-[28px] drop-shadow-md group-hover:text-primary fill-current transition-colors">favorite</span>
+</button>
+<span class="text-white text-xs font-semibold drop-shadow-md">12.5K</span>
+</div>
+<!-- Comments Button -->
+<div class="flex flex-col items-center gap-1">
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm transition-transform active:scale-90">
+<span class="material-symbols-outlined text-white text-[28px] drop-shadow-md">chat_bubble</span>
+</button>
+<span class="text-white text-xs font-semibold drop-shadow-md">482</span>
+</div>
+<!-- Bookmark/Wishlist Button -->
+<div class="flex flex-col items-center gap-1">
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm transition-transform active:scale-90">
+<span class="material-symbols-outlined text-white text-[28px] drop-shadow-md">bookmark</span>
+</button>
+<span class="text-white text-xs font-semibold drop-shadow-md">Save</span>
+</div>
+<!-- Share Button -->
+<div class="flex flex-col items-center gap-1">
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm transition-transform active:scale-90">
+<span class="material-symbols-outlined text-white text-[28px] drop-shadow-md">share</span>
+</button>
+<span class="text-white text-xs font-semibold drop-shadow-md">Share</span>
+</div>
+<!-- Music Disc Animation -->
+<div class="mt-4 animate-[spin_4s_linear_infinite]">
+<div class="h-10 w-10 rounded-full bg-slate-800 border-4 border-slate-900 flex items-center justify-center overflow-hidden">
+<img alt="Music album art" class="h-6 w-6 rounded-full object-cover opacity-80" data-alt="Abstract colorful music cover art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXvnpN9BIn04HehWVTEHKXAbYUDHODT075mOa64JJV9ZQjwfCndliviyaBckdjrA0NAs7SkSU94Qq7q4cnWPoOFnBpZEJK9mrp1zlcf97InBnBZ9wrvIy4vfDo6JFLEcXNq_VNv1C_fpbAoPJ52vLjk6Q9HtxrXzmQMPkdN63JlBe4G-Q1J_0RDmLbamoxCI9af2_BqwMeQhvJYrN64jEgDqaVZJDf38r0j14q2zpY0jeM5s_dPZi0oJ6MNnUUOd7ZrBqOLisdIx8"/>
+</div>
+</div>
+</div>
+<!-- Bottom Content Overlay -->
+<div class="absolute bottom-[4.5rem] left-0 right-0 z-20 flex flex-col justify-end px-4 pb-4 pointer-events-none">
+<!-- User Info & Caption (Pointer events auto to allow clicking links) -->
+<div class="mb-4 pr-16 pointer-events-auto">
+<h3 class="text-white font-bold text-lg mb-1 drop-shadow-md">@sophia_styles</h3>
+<p class="text-white/90 text-[15px] leading-snug drop-shadow-md font-medium">
+                The perfect office accessory! Adding a little sparkle to Monday morning ✨ <span class="text-primary font-bold">#JewelryLounge</span> #OOTD
+            </p>
+<div class="mt-2 flex items-center gap-2 text-white/80 text-xs font-medium">
+<span class="material-symbols-outlined text-[14px] animate-pulse">music_note</span>
+<span class="marquee whitespace-nowrap overflow-hidden">Original Audio - Sophia Styles • </span>
+</div>
+</div>
+<!-- Shop The Look Glassmorphism Card (Pointer events auto) -->
+<div class="glass-panel rounded-xl p-3 flex items-center gap-3 w-full max-w-sm pointer-events-auto shadow-lg animate-[slideUp_0.3s_ease-out]">
+<!-- Product Thumbnail -->
+<div class="h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-white/50">
+<img alt="Rose Gold Chain" class="h-full w-full object-cover" data-alt="Rose gold chain necklace on display" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBP_Ub5HTX_f8bNmJ8sxxFxqzA_uJFJo0Qz4iQFJqAKBk91tqwFlVGIOn1eNgvyGu-sqxP6ZSS8kaoqjA0laTLvYHwabvSASR1YOQsnNURXZIpDneyVY9WoB9VhLQ2ELyR15HUQoKzXSYprMxAVplGFlEpyN5fEGOks-vSkq2NqBOR2PwqG-gFRlHuasmznR28RUjeVH60LxflkRUt9JP0lwlskz6h_XuAULCveTaDvumKLuCyHh61qhROfGMFSNbLjTiirXqlaQY"/>
+</div>
+<!-- Product Details -->
+<div class="flex flex-1 flex-col justify-center">
+<h4 class="text-slate-900 font-bold text-sm leading-tight line-clamp-1">Rose Gold Layered Chain</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-primary font-bold text-sm">₹599</span>
+<span class="text-slate-500 text-xs line-through">₹1,299</span>
+<span class="text-[10px] text-green-700 font-bold bg-green-100 px-1 rounded ml-1">54% OFF</span>
+</div>
+</div>
+<!-- Buy Button -->
+<button class="shrink-0 bg-primary hover:bg-pink-600 text-white text-xs font-bold py-2.5 px-4 rounded-full shadow-md active:scale-95 transition-all">
+                Buy Now
+            </button>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="absolute bottom-0 w-full z-30 bg-white border-t border-[#f4f0f2] px-2 pb-5 pt-2 flex justify-around items-end">
+<!-- Feed (Active) -->
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-900 group" href="#">
+<span class="material-symbols-outlined text-[26px] font-variation-settings-fill transition-colors text-primary" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">home</span>
+<p class="text-primary text-[10px] font-bold leading-normal tracking-wide">Feed</p>
+</a>
+<!-- Shop -->
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary/70 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">shopping_bag</span>
+<p class="text-[10px] font-medium leading-normal tracking-wide">Shop</p>
+</a>
+<!-- Create Button (Middle) -->
+<a class="flex flex-col items-center justify-end -mt-4" href="#">
+<div class="bg-slate-900 text-white h-10 w-12 rounded-xl flex items-center justify-center shadow-lg border-x-2 border-white hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</div>
+</a>
+<!-- Wishlist -->
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary/70 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">favorite</span>
+<p class="text-[10px] font-medium leading-normal tracking-wide">Wishlist</p>
+</a>
+<!-- Profile -->
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary/70 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">person</span>
+<p class="text-[10px] font-medium leading-normal tracking-wide">Profile</p>
+</a>
+</div>
+</body></html>

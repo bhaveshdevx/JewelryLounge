@@ -1,0 +1,80 @@
+/**
+ * ============================================================
+ * Theme CSS — Custom Properties for 3-Theme System
+ * ============================================================
+ *
+ * Defines CSS custom properties for Light, Dark, and Luxury themes.
+ * These extend the Shadcn/Tailwind base variables defined in globals.css.
+ *
+ * How it works:
+ *   - The <html> element gets a class: "" (light), "dark", or "luxury"
+ *   - CSS custom properties cascade based on this class
+ *   - All components automatically pick up the correct colors
+ *
+ * Theme Palette Philosophy:
+ *   Light   → Clean whites, soft neutrals, modern minimalism
+ *   Dark    → Deep charcoals, muted golds, sleek nighttime shopping
+ *   Luxury  → Rich golds, deep blacks, premium velvet feel
+ * ============================================================
+ */
+
+/* ---------------------------------------------------------
+ * LUXURY Theme — Premium gold & black palette
+ *
+ * Designed to feel like a high-end jewelry boutique.
+ * Gold accents (#D4AF37) paired with rich dark backgrounds.
+ * --------------------------------------------------------- */
+.luxury {
+  /* Core backgrounds & foregrounds */
+  --background: oklch(0.12 0.005 60);           /* Very deep charcoal with warm undertone */
+  --foreground: oklch(0.93 0.02 85);             /* Warm off-white / champagne */
+
+  /* Card surfaces */
+  --card: oklch(0.16 0.008 60);                  /* Slightly lighter than background */
+  --card-foreground: oklch(0.93 0.02 85);
+
+  /* Popover (menus, dropdowns) */
+  --popover: oklch(0.16 0.008 60);
+  --popover-foreground: oklch(0.93 0.02 85);
+
+  /* Primary action — Rich Gold */
+  --primary: oklch(0.78 0.14 85);                /* Gold (#D4AF37 equivalent in oklch) */
+  --primary-foreground: oklch(0.12 0.005 60);    /* Dark text on gold buttons */
+
+  /* Secondary — Muted bronze */
+  --secondary: oklch(0.22 0.015 60);
+  --secondary-foreground: oklch(0.88 0.06 85);
+
+  /* Muted elements */
+  --muted: oklch(0.20 0.01 60);
+  --muted-foreground: oklch(0.60 0.04 85);
+
+  /* Accent — Warm gold highlight */
+  --accent: oklch(0.25 0.03 75);
+  --accent-foreground: oklch(0.88 0.06 85);
+
+  /* Destructive — Warm red that matches the palette */
+  --destructive: oklch(0.65 0.22 25);
+
+  /* Borders & inputs */
+  --border: oklch(0.30 0.03 75);
+  --input: oklch(0.25 0.02 65);
+  --ring: oklch(0.78 0.14 85);                   /* Gold ring/focus color */
+
+  /* Chart colors — Warm luxury palette */
+  --chart-1: oklch(0.78 0.14 85);                /* Gold */
+  --chart-2: oklch(0.60 0.10 50);                /* Bronze */
+  --chart-3: oklch(0.50 0.08 30);                /* Copper */
+  --chart-4: oklch(0.70 0.15 70);                /* Amber */
+  --chart-5: oklch(0.55 0.12 40);                /* Rose gold */
+
+  /* Sidebar */
+  --sidebar: oklch(0.14 0.006 60);
+  --sidebar-foreground: oklch(0.93 0.02 85);
+  --sidebar-primary: oklch(0.78 0.14 85);
+  --sidebar-primary-foreground: oklch(0.12 0.005 60);
+  --sidebar-accent: oklch(0.22 0.015 60);
+  --sidebar-accent-foreground: oklch(0.88 0.06 85);
+  --sidebar-border: oklch(0.30 0.03 75);
+  --sidebar-ring: oklch(0.78 0.14 85);
+}

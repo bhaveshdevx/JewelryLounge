@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jewelry Lounge - The Bridal Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#bd0f2c",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221013",
+                        "gold": "#D4AF37",
+                        "gold-light": "#F3E5AB",
+                        "emerald-deep": "#042f2e",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display text-white overflow-hidden h-screen w-full relative">
+<!-- Main Video Container (Full Screen) -->
+<div class="relative w-full h-full">
+<!-- Background Video Placeholder -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="Cinematic bridal jewelry emerald necklace vertical video" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAwrYeM0gdR6g0Qwb_i8OXaQJkAnFGQv8IuBM5eVG8gUNBjtLS5nkXDHysEU0aEAcXSTqznvcgI0HiDvw2wFCvoX9D4ZCUV_WLHNHOtMchjOiNsBRp0oBpGQsidmaxq6NRnu9OmryYNUwarLYzDU6Wx-rl1jtoqoHlgDy90dPQdcpqUy_LH0l4mUyYk0rc96942cZLeyAlsUbqJ4R_2h4WJS-WTvMXm_qpWsqJ3DtfG43jgpk0uBIFbCIdZ4tHkB5DtAQCrBzwzRC4');">
+<!-- Gradient Overlay for readability -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80"></div>
+</div>
+<!-- Right Sidebar Actions -->
+<div class="absolute right-4 bottom-48 flex flex-col items-center gap-6 z-20">
+<!-- Profile Avatar with Plus -->
+<div class="relative mb-4">
+<div class="w-12 h-12 rounded-full border-2 border-gold overflow-hidden bg-background-dark">
+<img alt="Brand profile avatar" class="w-full h-full object-cover" data-alt="Jewelry brand logo minimal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCboNrG7tDsobLGwtcWPiQVHkUGM_llhHHURPOuT7Q0bXoSWDznc2YwbOM6ekkfqEMnhIZYJyVElRw8auXxAcOb43fze5Azkw6OHJsNtj4YffbcJiVVcufnWsxFLrxiUuj4UcaJjk1uTPLE-kjcjp3baL833jwR1p7df8rhBwUfsoOCztdZYU1ZWfVafZB15n0fxtLR1mAMgJMU2D0w456hoFxdou9Ulr0BVgEvijfgMXW0yKVMuCvR-ZfzhDg-t_oaEvYQz01tXg"/>
+</div>
+<div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-primary rounded-full w-5 h-5 flex items-center justify-center text-white border border-background-dark">
+<span class="material-symbols-outlined text-[14px] font-bold">add</span>
+</div>
+</div>
+<!-- Like Button -->
+<div class="flex flex-col items-center gap-1">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-sm text-gold-light hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px] drop-shadow-md" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<span class="text-xs font-semibold text-gold-light drop-shadow-md">12.5k</span>
+</div>
+<!-- Comment Button -->
+<div class="flex flex-col items-center gap-1">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-sm text-gold-light hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px] drop-shadow-md">mode_comment</span>
+</button>
+<span class="text-xs font-semibold text-gold-light drop-shadow-md">840</span>
+</div>
+<!-- Bookmark Button -->
+<div class="flex flex-col items-center gap-1">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-sm text-gold-light hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px] drop-shadow-md">bookmark</span>
+</button>
+<span class="text-xs font-semibold text-gold-light drop-shadow-md">Save</span>
+</div>
+<!-- Share Button -->
+<div class="flex flex-col items-center gap-1">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-sm text-gold-light hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px] drop-shadow-md">share</span>
+</button>
+<span class="text-xs font-semibold text-gold-light drop-shadow-md">2.1k</span>
+</div>
+<!-- Music Disc Spinning Animation -->
+<div class="mt-4 w-10 h-10 rounded-full border-[3px] border-black/50 bg-gold-light overflow-hidden animate-[spin_6s_linear_infinite]">
+<img alt="Music track cover" class="w-full h-full object-cover" data-alt="Abstract gold luxury pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVsaMyYFbyZjBC0JB2rZUrwznVLIz7LUrYsRqUdRdSai0xwAlV6iAzAeAkaiJCxmS-4flqU2RhqvxtoAcKXZ8h51gIvDLQRJwJCZBiMW7_9tvpln6W1jjQq0xGj-QeoeqLutZZV-HDidpBcPk77hRIqowXjlbXq6bLtWQOHdy6ccDOhbsvMtcFIR8Oub8yVUFiZ8x205dX6XAscNF76a_c8h6MJZcm0GchzxFz1up0AOp1M_oBHbYMpn9F9AUGlDPmHO2irOZX6Bs"/>
+</div>
+</div>
+<!-- Left Content Overlay -->
+<div class="absolute bottom-20 left-0 w-full px-4 pb-4 z-10 flex flex-col justify-end pointer-events-none">
+<div class="w-[80%] pointer-events-auto mb-3">
+<h2 class="text-white text-lg font-bold drop-shadow-lg flex items-center gap-2 mb-1">
+                    @premium_collection 
+                    <span class="material-symbols-outlined text-blue-400 text-[16px] fill-current" style="font-variation-settings: 'FILL' 1;">verified</span>
+</h2>
+<p class="text-slate-100 text-sm leading-relaxed drop-shadow-md line-clamp-2 mb-2 font-light">
+                    Handcrafted vintage emerald drops for your special day. Truly one of a kind. <span class="font-semibold text-gold-light">#Bridal #Luxury #WeddingJewelry</span>
+</p>
+<div class="flex items-center gap-2 text-xs text-white/90">
+<span class="material-symbols-outlined text-[14px]">music_note</span>
+<span class="animate-pulse">Royal Entrance Theme - Original Audio</span>
+</div>
+</div>
+<!-- Shop The Look Card (Emerald Green Frosted Glass) -->
+<div class="pointer-events-auto relative mt-2 rounded-xl border border-gold/30 bg-emerald-deep/80 backdrop-blur-md p-3 shadow-xl overflow-hidden">
+<!-- Gold Trim Accent -->
+<div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-70"></div>
+<div class="flex items-center gap-3">
+<!-- Product Thumbnail -->
+<div class="relative w-14 h-14 rounded-lg overflow-hidden border border-white/10 shrink-0">
+<img alt="Emerald Drop Earrings" class="w-full h-full object-cover" data-alt="Close up of emerald earrings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJhpLSz8RVvsA1Qf4N0QalAAi1pH2PX7PlnJQIiA0F994baL9EuVuyKO3wvb4PECeWUhFgHycif4PBokIXC40GsF5eQbh4onSZGfNyDBaFuB4giloJNhVEj_f31H65nuPGpA4QWZrLFJ7KskVN0CCZOUfla2gVvJqUrNWmVu2gieXrqKVsx3jAWIHbVarSW0JFW6w6pYV-VnMAQAXZhnJxJTvl0UxCbAg6zt8NKjin9AUzoTVYYqBtZkxFeMnihG-yMKhEwmmKBig"/>
+</div>
+<!-- Product Details -->
+<div class="flex-1 min-w-0">
+<h3 class="text-white text-sm font-semibold truncate font-display">Vintage Emerald Drops</h3>
+<p class="text-gold-light text-sm font-bold mt-0.5">₹4,999</p>
+</div>
+<!-- Buy Button -->
+<button class="bg-primary hover:bg-red-800 text-gold-light text-sm font-bold px-4 py-2 rounded-lg shadow-lg border border-gold/20 whitespace-nowrap transition-colors">
+                        Buy Now
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-background-dark/95 backdrop-blur-md border-t border-white/5 z-50">
+<div class="flex justify-between items-end px-6 pb-5 pt-3">
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-gold-light/60 group-hover:text-gold-light transition-colors text-2xl">home</span>
+<span class="text-[10px] text-gold-light/60 group-hover:text-gold-light font-sans font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-gold-light/60 group-hover:text-gold-light transition-colors text-2xl">search</span>
+<span class="text-[10px] text-gold-light/60 group-hover:text-gold-light font-sans font-medium">Discover</span>
+</a>
+<!-- Center Action Button (Create) -->
+<a class="relative -top-3" href="#">
+<div class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-red-600 flex items-center justify-center shadow-lg border-2 border-background-dark text-white">
+<span class="material-symbols-outlined text-2xl">add</span>
+</div>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-gold-light/60 group-hover:text-gold-light transition-colors text-2xl">diamond</span>
+<span class="text-[10px] text-gold-light font-sans font-medium">Luxe</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-gold-light/60 group-hover:text-gold-light transition-colors text-2xl">person</span>
+<span class="text-[10px] text-gold-light/60 group-hover:text-gold-light font-sans font-medium">Profile</span>
+</a>
+</div>
+<!-- Safe Area Spacer for iOS Home Indicator -->
+<div class="h-1 w-full bg-transparent"></div>
+</div>
+</body></html>

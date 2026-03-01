@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jewelry Lounge - Transaction Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght,FILL@100..900,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#D4AF37", // Brushed Gold
+                        "background-light": "#f0fdf4",
+                        "background-dark": "#064E3B", // Emerald Green base
+                        "surface-dark": "#022c22", // Darker Emerald for cards
+                        "surface-highlight": "#134e4a", // Slightly lighter for contrast
+                    },
+                    fontFamily: {
+                        display: ["Noto Serif", "serif"],
+                        sans: ["Noto Serif", "serif"] // Forcing Serif everywhere as per "Luxury Mode" request
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Serif', serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-slate-100 flex justify-center">
+<div class="relative flex h-full min-h-screen w-full max-w-md flex-col overflow-x-hidden bg-background-light dark:bg-background-dark shadow-2xl">
+<!-- Header -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center font-display">Transaction Hub</h2>
+<div class="flex w-12 items-center justify-end">
+<p class="text-primary text-base font-bold leading-normal tracking-[0.015em] shrink-0 font-display">Help</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-3 bg-background-light dark:bg-background-dark sticky top-[56px] z-10 shadow-sm dark:shadow-none">
+<div class="flex border-b border-slate-200 dark:border-primary/20 px-4 justify-between">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-4 flex-1 transition-colors hover:text-primary" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em] font-display">Cart</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-4 flex-1 transition-colors hover:text-primary" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em] font-display">Wishlist</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em] font-display">Orders (1)</p>
+</a>
+</div>
+</div>
+<!-- Main Content Scroll Area -->
+<div class="flex-1 overflow-y-auto pb-24">
+<!-- Active Order Card -->
+<div class="p-4 space-y-6">
+<!-- Order Header -->
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-slate-900 dark:text-white text-xl font-bold font-display">Active Order</h3>
+<span class="text-xs text-primary bg-primary/10 px-2 py-1 rounded-full border border-primary/20">In Transit</span>
+</div>
+<div class="flex flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-lg border border-slate-100 dark:border-primary/10">
+<!-- Product Info -->
+<div class="flex gap-4">
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-primary/20" data-alt="Close up of luxury emerald earrings on dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDIPo4aAkG1hluuZVGolnGeoPpwRcSsHxpK7NoOlS6T6cE61idMEWAiOU8X_MvSBmpgbO2XuXhXPQIa0RNOYEK5Lihq2lZLC4cgRyNn6LUUSvW5TPmwtjQ-iJ0GC3Cs_QyU0NunxuE0_OO8V3NJxTyE09QLf-IjsHLoqAmkqcrIaB7w2GbfnC6AP-JtPvFmK3q7tcMPNQ27ceBRYnVNPE5UYcawc9ymTONmeY-Vp6hfXeiwMVP0hK1gnxRODwyr4UxgYg0YDamPROo");'></div>
+<div class="flex flex-col flex-1 justify-between py-1">
+<div>
+<p class="text-primary text-sm font-medium leading-normal mb-1">Shipped - Arriving Tue</p>
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight font-display">Vintage Emerald Drops</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal leading-normal mt-1">Order #402-991 • $145.00</p>
+</div>
+</div>
+</div>
+<div class="h-px bg-slate-100 dark:bg-primary/10 w-full my-2"></div>
+<!-- Timeline -->
+<div class="relative px-2">
+<!-- Progress Bar Background -->
+<div class="absolute left-6 top-[2.4rem] bottom-4 w-0.5 bg-slate-200 dark:bg-surface-highlight"></div>
+<!-- Timeline Items -->
+<div class="space-y-6 relative z-0">
+<!-- Step 1: Placed -->
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center gap-1 shrink-0 w-12 pt-1">
+<div class="rounded-full bg-primary/20 text-primary p-1">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+</div>
+<div class="flex flex-col pt-1">
+<p class="text-slate-900 dark:text-slate-300 text-sm font-medium leading-normal">Placed</p>
+<p class="text-slate-500 dark:text-slate-500 text-xs">Oct 24, 2:30 PM</p>
+</div>
+</div>
+<!-- Step 2: Processing -->
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center gap-1 shrink-0 w-12 pt-1">
+<div class="rounded-full bg-primary/20 text-primary p-1">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+</div>
+<div class="flex flex-col pt-1">
+<p class="text-slate-900 dark:text-slate-300 text-sm font-medium leading-normal">Processing</p>
+<p class="text-slate-500 dark:text-slate-500 text-xs">Oct 25, 9:15 AM</p>
+</div>
+</div>
+<!-- Step 3: Shipped (Active) -->
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center gap-1 shrink-0 w-12 pt-1">
+<div class="rounded-full bg-primary text-background-dark p-1 shadow-[0_0_10px_rgba(212,175,55,0.4)]">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+</div>
+</div>
+<div class="flex flex-col pt-1">
+<p class="text-primary text-base font-bold leading-normal">Shipped</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Oct 26, 4:45 PM</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1 italic">On the way to local facility</p>
+</div>
+</div>
+<!-- Step 4: Delivered -->
+<div class="flex items-start gap-4 opacity-50">
+<div class="flex flex-col items-center gap-1 shrink-0 w-12 pt-1">
+<div class="rounded-full bg-slate-200 dark:bg-surface-highlight text-slate-400 dark:text-slate-500 p-1">
+<span class="material-symbols-outlined text-[18px]">home</span>
+</div>
+</div>
+<div class="flex flex-col pt-1">
+<p class="text-slate-900 dark:text-slate-300 text-sm font-medium leading-normal">Delivered</p>
+<p class="text-slate-500 dark:text-slate-500 text-xs">Estimated Oct 29</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex gap-3 pt-2">
+<button class="flex-1 flex items-center justify-center rounded-lg h-10 px-4 bg-slate-100 dark:bg-surface-highlight text-slate-900 dark:text-slate-200 text-sm font-medium hover:bg-slate-200 dark:hover:bg-primary/20 transition-colors">
+                            Track Package
+                        </button>
+<button class="flex items-center justify-center rounded-lg size-10 bg-slate-100 dark:bg-surface-highlight text-slate-900 dark:text-slate-200 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Past Orders Section -->
+<div class="px-4 pb-4">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold font-display mb-4 px-1">Past Purchases</h3>
+<div class="space-y-4">
+<!-- Past Order 1 -->
+<div class="flex flex-col gap-3 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-slate-100 dark:border-primary/5">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="size-16 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-primary/10" data-alt="Gold necklace on model neck" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDHlZDL4d_ff4dvez0_ONyNL1Zzgu6EHOEyfe4MRigT_WeUQPYC51anIba4H85nMRRqsceaC8vbhaIBogx4myJT1sUS-W5XuxG24jBKywPbx-CX60VSR86cEXekHx0lL-eYlrsf4aMBNx1Q3BFOKw1nGZwDc4vcKzZo5xFlLKqSDt4lFX_saHWCy1HG4dQxwkOIpQw4XcyPXQMDh4-n4niFw68Zdsf8o0cxnCbXYvx7YONbonsbBp101MBsT_lsAD2w-ViRs0QFZBg");'></div>
+<div>
+<p class="text-slate-900 dark:text-slate-200 font-bold text-sm font-display">Sapphire Pendant</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Delivered Sep 12</p>
+</div>
+</div>
+<p class="text-slate-900 dark:text-slate-200 font-medium text-sm">$210.00</p>
+</div>
+<div class="flex justify-end border-t border-slate-100 dark:border-white/5 pt-3 mt-1">
+<button class="text-primary text-sm font-bold font-display flex items-center gap-1 hover:text-primary/80">
+<span class="material-symbols-outlined text-[18px]">cached</span>
+                                Buy Again
+                            </button>
+</div>
+</div>
+<!-- Past Order 2 -->
+<div class="flex flex-col gap-3 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-slate-100 dark:border-primary/5">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="size-16 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-primary/10" data-alt="Stack of silver and gold rings" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTad2iSijHLeMVClQOn_0Q497ifr6XESuHSrn4UEa1ARWO5b5dtBgjnKfDfFNd7cEQprU8wrYPe5ck6HEOPgMXRhdNAjwsSRulDBd_4_9AcsUIhSze2uWgVcwutLyzGx-lkbfyTxxGPc7u1JCwC6suacN6cerA6ukJ9NmPghUatUh_5PvQYT3c8eunQ7jwOXoUnmdW7x_8Dk61O70QU5svrZzkELzbdesOFQQ12Pt4EMCCTU-vE0Kvx31SJwv0WNglRXgk6ed5KXs");'></div>
+<div>
+<p class="text-slate-900 dark:text-slate-200 font-bold text-sm font-display">Stacked Rings Set</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Delivered Aug 05</p>
+</div>
+</div>
+<p class="text-slate-900 dark:text-slate-200 font-medium text-sm">$89.00</p>
+</div>
+<div class="flex justify-end border-t border-slate-100 dark:border-white/5 pt-3 mt-1">
+<button class="text-primary text-sm font-bold font-display flex items-center gap-1 hover:text-primary/80">
+<span class="material-symbols-outlined text-[18px]">cached</span>
+                                Buy Again
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<div class="flex gap-2 border-t border-slate-200 dark:border-primary/20 bg-background-light dark:bg-surface-dark px-4 pb-5 pt-3 absolute bottom-0 w-full z-20">
+<a class="just flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<div class="flex h-6 items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">home</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em] font-display">Home</p>
+</a>
+<a class="just flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<div class="flex h-6 items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">storefront</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em] font-display">Shop</p>
+</a>
+<a class="just flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-primary" href="#">
+<div class="flex h-6 items-center justify-center">
+<span class="material-symbols-outlined text-[24px] filled">diamond</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em] font-display">Lounge</p>
+</a>
+<a class="just flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<div class="flex h-6 items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">person</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em] font-display">Profile</p>
+</a>
+</div>
+</div>
+</body></html>
