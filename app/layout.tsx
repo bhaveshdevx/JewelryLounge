@@ -21,7 +21,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { AuthProvider } from "@/components/providers/auth-provider";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 import { LayoutShell } from "@/components/layout/layout-shell";
-
+import { Analytics } from "@vercel/analytics/next"
 // ---------------------------------------------------------------------------
 // Font Configuration — Plus Jakarta Sans (matches HTML mockups)
 // ---------------------------------------------------------------------------
