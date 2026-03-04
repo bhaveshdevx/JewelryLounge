@@ -1,20 +1,20 @@
 /**
  * ============================================================
- * ProductGrid — 2-Column Product Grid with Animated Filtering
+ * ProductGrid — 2-Column Product Grid with Live Data
  * ============================================================
  *
  * Shows "Just For You" header + "View All" link.
- * Filters products based on active vibe and filter pill.
- * Fade transition when grid content changes.
+ * Fetches products from Supabase with optional filters.
+ * Loading skeleton while data is being fetched.
  * ============================================================
  */
 
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProductCard } from "@/components/product/product-card";
-import { MOCK_PRODUCTS } from "@/lib/mock-data";
+import { getProducts } from "@/lib/supabase/queries";
 import type { Product } from "@/types";
 
 interface ProductGridProps {
@@ -31,38 +31,47 @@ export function ProductGrid({
     activeFilter,
     onProductTap,
 }: ProductGridProps) {
-    /** Filter products based on active vibe and filter pill */
-    const filteredProducts = useMemo(() => {
-        let products = MOCK_PRODUCTS;
+    const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
 
-        // Filter by vibe (category slug in tags)
+    // Fetch products from Supabase whenever filters change
+    useEffect(() => {
+        setLoading(true);
+
+        // Build query options based on active filters
+        const options: Parameters<typeof getProducts>[0] = {
+            activeOnly: true,
+            limit: 20,
+        };
+
+        // Price filter
+        if (activeFilter === "under-499") {
+            options.maxPrice = 499;
+        }
+
+        // Tag-based filters
+        if (activeFilter === "trending") {
+            options.tag = "trending";
+        } else if (activeFilter === "new-arrivals") {
+            options.tag = "new-arrival";
+        } else if (activeFilter === "best-sellers") {
+            options.tag = "best-seller";
+        }
+
+        // Vibe (category tag) filter
         if (activeVibe) {
-            products = products.filter((p) => p.tags.includes(activeVibe));
+            options.tag = activeVibe;
         }
 
-        // Filter by pill
-        if (activeFilter) {
-            switch (activeFilter) {
-                case "under-499":
-                    products = products.filter(
-                        (p) => (p.salePrice ?? p.price) < 500,
-                    );
-                    break;
-                case "trending":
-                    products = products.filter((p) => p.tags.includes("trending"));
-                    break;
-                case "new-arrivals":
-                    products = products.filter(
-                        (p) => p.tags.includes("new-arrival") || p.tags.includes("new"),
-                    );
-                    break;
-                case "best-sellers":
-                    products = products.filter((p) => p.tags.includes("best-seller"));
-                    break;
+        getProducts(options).then(({ data, error }) => {
+            if (error) {
+                console.error("Failed to fetch products:", error.message);
+                setProducts([]);
+            } else {
+                setProducts((data as Product[]) ?? []);
             }
-        }
-
-        return products;
+            setLoading(false);
+        });
     }, [activeVibe, activeFilter]);
 
     return (
@@ -90,8 +99,17 @@ export function ProductGrid({
                     transition={{ duration: 0.2 }}
                     className="grid grid-cols-2 gap-3"
                 >
-                    {filteredProducts.length > 0 ? (
-                        filteredProducts.map((product) => (
+                    {loading ? (
+                        // Skeleton loader
+                        Array.from({ length: 4 }).map((_, i) => (
+                            <div key={i} className="animate-pulse">
+                                <div className="aspect-[3/4] rounded-xl bg-slate-200 dark:bg-slate-800 mb-2" />
+                                <div className="h-3 bg-slate-200 dark:bg-slate-800 rounded w-3/4 mb-1" />
+                                <div className="h-3 bg-slate-200 dark:bg-slate-800 rounded w-1/2" />
+                            </div>
+                        ))
+                    ) : products.length > 0 ? (
+                        products.map((product) => (
                             <ProductCard
                                 key={product.id}
                                 product={product}

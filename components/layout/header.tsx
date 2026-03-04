@@ -4,7 +4,8 @@
  * ============================================================
  *
  * Auto-hides on scroll down, reappears on scroll up.
- * Contains: diamond logo, brand name, search icon, notification bell.
+ * Contains: diamond logo, brand name, search icon, notification bell,
+ * and auth avatar / login button.
  *
  * Uses Framer Motion for smooth slide animation.
  * ============================================================
@@ -12,13 +13,16 @@
 
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
+import { useAuthStore } from "@/stores/auth-store";
 
 export function Header() {
     const [hidden, setHidden] = useState(false);
     const { scrollY } = useScroll();
+    const { user, profile, isLoading } = useAuthStore();
 
     // Track scroll direction — hide on scroll down, show on scroll up
     useMotionValueEvent(scrollY, "change", (latest) => {
@@ -66,6 +70,28 @@ export function Header() {
                     {/* Red notification dot */}
                     <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-primary ring-1 ring-white dark:ring-slate-900" />
                 </button>
+
+                {/* Auth: Avatar or Login */}
+                {!isLoading && (
+                    <Link
+                        href="/profile"
+                        className="flex items-center justify-center p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                    >
+                        {user?.user_metadata?.avatar_url ? (
+                            <Image
+                                src={user.user_metadata.avatar_url}
+                                alt={profile?.full_name || "Profile"}
+                                width={28}
+                                height={28}
+                                className="rounded-full object-cover"
+                            />
+                        ) : (
+                            <span className="material-symbols-outlined !text-[22px] text-slate-600 dark:text-slate-300">
+                                account_circle
+                            </span>
+                        )}
+                    </Link>
+                )}
             </div>
         </motion.header>
     );

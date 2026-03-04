@@ -6,18 +6,18 @@
  * 3-tab layout with swipeable tabs.
  * Cart: item list with quantity controls, swipe-to-delete.
  * Sticky checkout summary at bottom.
- * "You might also like" horizontal scroll.
+ * "You might also like" fetched from Supabase.
  * ============================================================
  */
 
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useCartStore } from "@/stores/cart-store";
+import { getProducts } from "@/lib/supabase/queries";
 import { CURRENCY } from "@/lib/constants";
-import { MOCK_PRODUCTS } from "@/lib/mock-data";
 import type { Product } from "@/types";
 
 type Tab = "cart" | "wishlist" | "orders";
@@ -26,6 +26,7 @@ export default function CartPage() {
     const [activeTab, setActiveTab] = useState<Tab>("cart");
     const { items, addItem, removeItem, deleteItem, totalPrice } =
         useCartStore();
+    const [suggestions, setSuggestions] = useState<Product[]>([]);
 
     const tabs: { id: Tab; label: string }[] = [
         { id: "cart", label: `Cart (${items.length})` },
@@ -33,11 +34,16 @@ export default function CartPage() {
         { id: "orders", label: "Orders" },
     ];
 
-    /* "You might also like" — show products not in cart */
-    const cartProductIds = new Set(items.map((i) => i.product.id));
-    const suggestions = MOCK_PRODUCTS.filter(
-        (p) => !cartProductIds.has(p.id),
-    ).slice(0, 5);
+    // Fetch "You might also like" suggestions from DB
+    useEffect(() => {
+        getProducts({ limit: 8, activeOnly: true }).then(({ data }) => {
+            const cartProductIds = new Set(items.map((i) => i.product.id));
+            const filtered = ((data as Product[]) ?? [])
+                .filter((p) => !cartProductIds.has(p.id))
+                .slice(0, 5);
+            setSuggestions(filtered);
+        });
+    }, [items]);
 
     return (
         <div className="flex flex-col min-h-[calc(100vh-7rem)]">
@@ -49,8 +55,8 @@ export default function CartPage() {
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex flex-col items-center justify-center border-b-[3px] pb-2 pt-2 flex-1 transition-all text-sm font-bold tracking-[0.015em] ${activeTab === tab.id
-                                    ? "border-primary text-primary"
-                                    : "border-transparent text-slate-400 hover:text-slate-700"
+                                ? "border-primary text-primary"
+                                : "border-transparent text-slate-400 hover:text-slate-700"
                                 }`}
                         >
                             {tab.label}
@@ -103,19 +109,19 @@ export default function CartPage() {
                                             <div key={p.id} className="shrink-0 w-28">
                                                 <div className="aspect-square rounded-lg overflow-hidden mb-2 bg-slate-100 relative">
                                                     <Image
-                                                        src={p.images[0]}
-                                                        alt={p.name}
+                                                        src={p.media_urls[0]}
+                                                        alt={p.title}
                                                         fill
                                                         className="object-cover"
                                                         sizes="112px"
                                                     />
                                                 </div>
                                                 <p className="text-xs font-medium text-slate-900 dark:text-white truncate">
-                                                    {p.name}
+                                                    {p.title}
                                                 </p>
                                                 <p className="text-xs text-slate-500">
                                                     {CURRENCY}
-                                                    {(p.salePrice ?? p.price).toLocaleString("en-IN")}
+                                                    {(p.discount_price ?? p.selling_price).toLocaleString("en-IN")}
                                                 </p>
                                             </div>
                                         ))}
@@ -252,8 +258,8 @@ function CartItemRow({
                     {/* Product Thumbnail */}
                     <div className="rounded-xl w-16 h-16 shadow-sm shrink-0 overflow-hidden relative bg-slate-100">
                         <Image
-                            src={product.images[0]}
-                            alt={product.name}
+                            src={product.media_urls[0]}
+                            alt={product.title}
                             fill
                             className="object-cover"
                             sizes="64px"
@@ -264,15 +270,15 @@ function CartItemRow({
                     <div className="flex flex-1 flex-col justify-between h-16">
                         <div>
                             <p className="text-sm font-bold leading-tight line-clamp-1 text-slate-900 dark:text-white">
-                                {product.name}
+                                {product.title}
                             </p>
                             <p className="text-xs font-medium mt-0.5 text-slate-500">
-                                {product.inStock ? "In Stock" : "Low Stock"}
+                                {product.stock_count > 0 ? "In Stock" : "Low Stock"}
                             </p>
                         </div>
                         <p className="text-primary text-sm font-bold">
                             {CURRENCY}
-                            {(product.salePrice ?? product.price).toLocaleString("en-IN")}
+                            {(product.discount_price ?? product.selling_price).toLocaleString("en-IN")}
                         </p>
                     </div>
                 </div>

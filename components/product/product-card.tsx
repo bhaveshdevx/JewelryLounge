@@ -30,14 +30,15 @@ export function ProductCard({ product, onTap }: ProductCardProps) {
 
     /** Calculate discount percentage */
     const discount =
-        product.salePrice && product.salePrice < product.price
-            ? Math.round(((product.price - product.salePrice) / product.price) * 100)
+        product.discount_price && product.discount_price < product.selling_price
+            ? Math.round(((product.selling_price - product.discount_price) / product.selling_price) * 100)
             : null;
 
     /** Get badge label from tags */
-    const badge = product.tags.includes("best-seller")
+    const productTags: string[] = product.attributes?.tags ?? [];
+    const badge = productTags.includes("best-seller")
         ? "Best Seller"
-        : product.tags.includes("new")
+        : productTags.includes("new")
             ? "New"
             : null;
 
@@ -53,21 +54,23 @@ export function ProductCard({ product, onTap }: ProductCardProps) {
                 className="aspect-[3/4] w-full overflow-hidden rounded-lg bg-slate-100 relative cursor-pointer"
                 onClick={() => onTap?.(product)}
             >
-                <Image
-                    src={product.images[0]}
-                    alt={product.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="(max-width: 448px) 50vw, 200px"
-                />
+                {product.media_urls?.[0] && (
+                    <Image
+                        src={product.media_urls[0]}
+                        alt={product.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 448px) 50vw, 200px"
+                    />
+                )}
 
                 {/* Heart Button */}
                 <motion.button
                     onClick={handleLike}
                     whileTap={{ scale: 1.3 }}
                     className={`absolute top-2 right-2 p-1.5 rounded-full backdrop-blur-sm shadow-sm transition-colors ${liked
-                            ? "bg-white/80 text-red-500"
-                            : "bg-white/80 text-slate-400 hover:text-red-500"
+                        ? "bg-white/80 text-red-500"
+                        : "bg-white/80 text-slate-400 hover:text-red-500"
                         }`}
                 >
                     <span
@@ -92,17 +95,17 @@ export function ProductCard({ product, onTap }: ProductCardProps) {
             {/* Product Info */}
             <div className="flex flex-col gap-0.5">
                 <h4 className="text-xs font-semibold text-slate-900 dark:text-white truncate">
-                    {product.name}
+                    {product.title}
                 </h4>
                 <div className="flex items-center gap-1.5">
                     <p className="text-sm font-bold text-slate-900 dark:text-white">
                         {CURRENCY}
-                        {(product.salePrice ?? product.price).toLocaleString("en-IN")}
+                        {(product.discount_price ?? product.selling_price).toLocaleString("en-IN")}
                     </p>
-                    {product.salePrice && product.salePrice < product.price && (
+                    {product.discount_price && product.discount_price < product.selling_price && (
                         <p className="text-[10px] text-slate-500 line-through">
                             {CURRENCY}
-                            {product.price.toLocaleString("en-IN")}
+                            {product.selling_price.toLocaleString("en-IN")}
                         </p>
                     )}
                     {discount && (

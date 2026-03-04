@@ -41,9 +41,9 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
     }, [product, addItem]);
 
     const discount =
-        product?.salePrice && product.salePrice < product.price
+        product?.discount_price && product.discount_price < product.selling_price
             ? Math.round(
-                ((product.price - product.salePrice) / product.price) * 100,
+                ((product.selling_price - product.discount_price) / product.selling_price) * 100,
             )
             : null;
 
@@ -93,11 +93,11 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                                 {/* Main image */}
                                 <div className="w-full h-full overflow-hidden" ref={emblaRef}>
                                     <div className="flex h-full">
-                                        {product.images.map((img, i) => (
+                                        {product.media_urls.map((img, i) => (
                                             <div key={i} className="flex-[0_0_100%] relative h-full">
                                                 <Image
                                                     src={img}
-                                                    alt={`${product.name} view ${i + 1}`}
+                                                    alt={`${product.title} view ${i + 1}`}
                                                     fill
                                                     className="object-cover"
                                                     sizes="(max-width: 448px) 100vw, 448px"
@@ -109,14 +109,14 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                                 </div>
 
                                 {/* Pagination dots */}
-                                {product.images.length > 1 && (
+                                {product.media_urls.length > 1 && (
                                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
-                                        {product.images.map((_, i) => (
+                                        {product.media_urls.map((_, i) => (
                                             <div
                                                 key={i}
                                                 className={`w-2 h-2 rounded-full shadow-sm ${i === activeImageIndex
-                                                        ? "bg-white"
-                                                        : "bg-white/50"
+                                                    ? "bg-white"
+                                                    : "bg-white/50"
                                                     }`}
                                             />
                                         ))}
@@ -125,9 +125,9 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                             </div>
 
                             {/* Thumbnail Strip */}
-                            {product.images.length > 1 && (
+                            {product.media_urls.length > 1 && (
                                 <div className="flex gap-3 px-5 py-4 overflow-x-auto no-scrollbar">
-                                    {product.images.map((img, i) => (
+                                    {product.media_urls.map((img, i) => (
                                         <button
                                             key={i}
                                             onClick={() => {
@@ -135,8 +135,8 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                                                 emblaApi?.scrollTo(i);
                                             }}
                                             className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden ${i === activeImageIndex
-                                                    ? "border-2 border-primary p-0.5"
-                                                    : "border border-slate-200 dark:border-slate-700"
+                                                ? "border-2 border-primary p-0.5"
+                                                : "border border-slate-200 dark:border-slate-700"
                                                 }`}
                                         >
                                             <Image
@@ -156,17 +156,17 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                                 {/* Name & Price */}
                                 <div className="flex items-start justify-between mb-2">
                                     <h1 className="text-2xl font-bold leading-tight tracking-tight text-slate-900 dark:text-slate-100">
-                                        {product.name}
+                                        {product.title}
                                     </h1>
                                     <div className="flex flex-col items-end">
                                         <span className="text-primary text-xl font-bold tracking-tight">
                                             {CURRENCY}
-                                            {(product.salePrice ?? product.price).toLocaleString("en-IN")}
+                                            {(product.discount_price ?? product.selling_price).toLocaleString("en-IN")}
                                         </span>
-                                        {product.salePrice && product.salePrice < product.price && (
+                                        {product.discount_price && product.discount_price < product.selling_price && (
                                             <span className="text-slate-500 line-through text-sm">
                                                 {CURRENCY}
-                                                {product.price.toLocaleString("en-IN")}
+                                                {product.selling_price.toLocaleString("en-IN")}
                                             </span>
                                         )}
                                     </div>
@@ -174,7 +174,7 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
 
                                 {/* Badges + Rating */}
                                 <div className="flex items-center gap-2 mb-4">
-                                    {product.tags.includes("best-seller") && (
+                                    {(product.attributes?.tags ?? []).includes("best-seller") && (
                                         <span className="px-2 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-md">
                                             Best Seller
                                         </span>

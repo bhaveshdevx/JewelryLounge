@@ -73,10 +73,10 @@ function FeedCard({ item, onBuyTap }: FeedCardProps) {
     }, []);
 
     const discount =
-        item.product.salePrice && item.product.salePrice < item.product.price
+        item.product.discount_price && item.product.discount_price < item.product.selling_price
             ? Math.round(
-                ((item.product.price - item.product.salePrice) /
-                    item.product.price) *
+                ((item.product.selling_price - item.product.discount_price) /
+                    item.product.selling_price) *
                 100,
             )
             : null;
@@ -265,8 +265,8 @@ function FeedCard({ item, onBuyTap }: FeedCardProps) {
                     {/* Product Thumbnail */}
                     <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-white/50">
                         <Image
-                            src={item.product.images[0]}
-                            alt={item.product.name}
+                            src={item.product.media_urls[0]}
+                            alt={item.product.title}
                             width={56}
                             height={56}
                             className="h-full w-full object-cover"
@@ -276,20 +276,20 @@ function FeedCard({ item, onBuyTap }: FeedCardProps) {
                     {/* Product Info */}
                     <div className="flex flex-1 flex-col justify-center">
                         <h4 className="text-slate-900 font-bold text-sm leading-tight line-clamp-1">
-                            {item.product.name}
+                            {item.product.title}
                         </h4>
                         <div className="flex items-center gap-2 mt-0.5">
                             <span className="text-primary font-bold text-sm">
                                 {CURRENCY}
-                                {(item.product.salePrice ?? item.product.price).toLocaleString(
+                                {(item.product.discount_price ?? item.product.selling_price).toLocaleString(
                                     "en-IN",
                                 )}
                             </span>
-                            {item.product.salePrice &&
-                                item.product.salePrice < item.product.price && (
+                            {item.product.discount_price &&
+                                item.product.discount_price < item.product.selling_price && (
                                     <span className="text-slate-500 text-xs line-through">
                                         {CURRENCY}
-                                        {item.product.price.toLocaleString("en-IN")}
+                                        {item.product.selling_price.toLocaleString("en-IN")}
                                     </span>
                                 )}
                             {discount && (

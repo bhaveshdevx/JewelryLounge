@@ -4,21 +4,23 @@
  * ============================================================
  *
  * Sections:
- *   - Search bar with autofocus
+ *   - Search bar with autofocus (wired to Supabase search)
  *   - Filter pills (All, Occasion, Type, Price, Material)
  *   - Recent Searches with Clear All
- *   - Trending Categories 2×2 grid
- *   - "Recommended for You" horizontal scroll
+ *   - Trending Categories 2×2 grid (static)
+ *   - "Recommended for You" fetched from Supabase
  * ============================================================
  */
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MOCK_TRENDING_CATEGORIES, MOCK_PRODUCTS } from "@/lib/mock-data";
+import { MOCK_TRENDING_CATEGORIES } from "@/lib/mock-data";
+import { getProducts, searchProducts } from "@/lib/supabase/queries";
 import { CURRENCY } from "@/lib/constants";
+import type { Product } from "@/types";
 
 const DISCOVER_PILLS = [
     { id: "all", label: "All", hasDropdown: false },
@@ -35,8 +37,34 @@ export default function DiscoverPage() {
         "Vintage Pearl Necklace",
         "Silver Rings",
     ]);
+    const [recommended, setRecommended] = useState<Product[]>([]);
+    const [searchResults, setSearchResults] = useState<Product[] | null>(null);
+    const [loading, setLoading] = useState(true);
 
-    const recommended = MOCK_PRODUCTS.slice(0, 4);
+    // Fetch recommended products from DB
+    useEffect(() => {
+        setLoading(true);
+        getProducts({ limit: 4, activeOnly: true }).then(({ data }) => {
+            setRecommended((data as Product[]) ?? []);
+            setLoading(false);
+        });
+    }, []);
+
+    // Search with debounce
+    useEffect(() => {
+        if (!searchQuery.trim()) {
+            setSearchResults(null);
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            searchProducts(searchQuery.trim()).then(({ data }) => {
+                setSearchResults((data as Product[]) ?? []);
+            });
+        }, 400);
+
+        return () => clearTimeout(timer);
+    }, [searchQuery]);
 
     return (
         <div className="flex flex-col min-h-[calc(100vh-7rem)]">
@@ -96,136 +124,187 @@ export default function DiscoverPage() {
 
             {/* Scrollable Content */}
             <div className="flex-1 overflow-y-auto overflow-x-hidden pb-24 bg-white dark:bg-slate-900">
-                {/* Filter Pills */}
-                <div className="flex gap-2.5 px-4 pb-4 overflow-x-auto no-scrollbar w-full">
-                    {DISCOVER_PILLS.map((pill) => (
-                        <button
-                            key={pill.id}
-                            onClick={() => setActiveFilter(pill.id)}
-                            className={`flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full px-4 active:scale-95 transition-transform text-sm font-medium ${activeFilter === pill.id
-                                    ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm"
-                                    : "bg-slate-100 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700"
-                                }`}
-                        >
-                            {pill.label}
-                            {pill.hasDropdown && (
-                                <span className="material-symbols-outlined text-slate-400 text-[18px]">
-                                    keyboard_arrow_down
+                {/* Search Results */}
+                {searchResults !== null ? (
+                    <div className="px-4 py-4">
+                        <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3">
+                            Results for &ldquo;{searchQuery}&rdquo;
+                        </h3>
+                        {searchResults.length === 0 ? (
+                            <div className="flex flex-col items-center py-12 text-slate-400 gap-2">
+                                <span className="material-symbols-outlined text-4xl">
+                                    search_off
                                 </span>
-                            )}
-                        </button>
-                    ))}
-                </div>
+                                <p className="text-sm">No products found</p>
+                            </div>
+                        ) : (
+                            <div className="grid grid-cols-2 gap-3">
+                                {searchResults.map((product) => (
+                                    <div key={product.id} className="flex flex-col gap-2">
+                                        <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-gray-100">
+                                            <Image
+                                                src={product.media_urls[0]}
+                                                alt={product.title}
+                                                fill
+                                                className="object-cover"
+                                                sizes="(max-width: 448px) 50vw, 200px"
+                                            />
+                                        </div>
+                                        <div>
+                                            <p className="text-slate-900 dark:text-white font-semibold text-sm truncate">
+                                                {product.title}
+                                            </p>
+                                            <p className="text-slate-500 text-xs">
+                                                {CURRENCY}
+                                                {(product.discount_price ?? product.selling_price).toLocaleString("en-IN")}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <>
+                        {/* Filter Pills */}
+                        <div className="flex gap-2.5 px-4 pb-4 overflow-x-auto no-scrollbar w-full">
+                            {DISCOVER_PILLS.map((pill) => (
+                                <button
+                                    key={pill.id}
+                                    onClick={() => setActiveFilter(pill.id)}
+                                    className={`flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full px-4 active:scale-95 transition-transform text-sm font-medium ${activeFilter === pill.id
+                                        ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm"
+                                        : "bg-slate-100 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700"
+                                        }`}
+                                >
+                                    {pill.label}
+                                    {pill.hasDropdown && (
+                                        <span className="material-symbols-outlined text-slate-400 text-[18px]">
+                                            keyboard_arrow_down
+                                        </span>
+                                    )}
+                                </button>
+                            ))}
+                        </div>
 
-                {/* Recent Searches */}
-                {recentSearches.length > 0 && (
-                    <div className="px-4 mb-6">
-                        <div className="flex items-center justify-between mb-3">
-                            <h3 className="text-slate-900 dark:text-white text-sm font-bold tracking-tight">
-                                Recent Searches
+                        {/* Recent Searches */}
+                        {recentSearches.length > 0 && (
+                            <div className="px-4 mb-6">
+                                <div className="flex items-center justify-between mb-3">
+                                    <h3 className="text-slate-900 dark:text-white text-sm font-bold tracking-tight">
+                                        Recent Searches
+                                    </h3>
+                                    <button
+                                        onClick={() => setRecentSearches([])}
+                                        className="text-primary text-xs font-semibold"
+                                    >
+                                        Clear All
+                                    </button>
+                                </div>
+                                <div className="flex flex-wrap gap-2">
+                                    {recentSearches.map((term) => (
+                                        <div
+                                            key={term}
+                                            onClick={() => setSearchQuery(term)}
+                                            className="flex items-center gap-2 rounded-lg bg-slate-100 dark:bg-slate-800 px-3 py-2 text-slate-600 dark:text-slate-300 text-sm cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                                        >
+                                            <span className="material-symbols-outlined text-slate-400 text-[16px]">
+                                                history
+                                            </span>
+                                            {term}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Trending Categories */}
+                        <div className="flex items-center justify-between px-4 pb-3">
+                            <h3 className="text-slate-900 dark:text-white text-lg font-bold leading-tight">
+                                Trending Categories
                             </h3>
-                            <button
-                                onClick={() => setRecentSearches([])}
-                                className="text-primary text-xs font-semibold"
-                            >
-                                Clear All
+                            <button className="text-primary text-sm font-medium flex items-center gap-0.5">
+                                View All
+                                <span className="material-symbols-outlined text-[16px]">
+                                    arrow_forward
+                                </span>
                             </button>
                         </div>
-                        <div className="flex flex-wrap gap-2">
-                            {recentSearches.map((term) => (
+
+                        <div className="grid grid-cols-2 gap-3 px-4 pb-6">
+                            {MOCK_TRENDING_CATEGORIES.map((cat) => (
                                 <div
-                                    key={term}
-                                    className="flex items-center gap-2 rounded-lg bg-slate-100 dark:bg-slate-800 px-3 py-2 text-slate-600 dark:text-slate-300 text-sm cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                                    key={cat.id}
+                                    className="group relative overflow-hidden rounded-xl h-48 w-full shadow-sm hover:shadow-md transition-shadow cursor-pointer"
                                 >
-                                    <span className="material-symbols-outlined text-slate-400 text-[16px]">
-                                        history
-                                    </span>
-                                    {term}
+                                    <Image
+                                        src={cat.image}
+                                        alt={cat.name}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                        sizes="(max-width: 448px) 50vw, 200px"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 flex flex-col justify-end">
+                                        <h4 className="text-white font-bold text-base leading-tight">
+                                            {cat.name}
+                                        </h4>
+                                        <p className="text-white/80 text-xs mt-1">{cat.subtitle}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
-                    </div>
-                )}
 
-                {/* Trending Categories */}
-                <div className="flex items-center justify-between px-4 pb-3">
-                    <h3 className="text-slate-900 dark:text-white text-lg font-bold leading-tight">
-                        Trending Categories
-                    </h3>
-                    <button className="text-primary text-sm font-medium flex items-center gap-0.5">
-                        View All
-                        <span className="material-symbols-outlined text-[16px]">
-                            arrow_forward
-                        </span>
-                    </button>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 px-4 pb-6">
-                    {MOCK_TRENDING_CATEGORIES.map((cat) => (
-                        <div
-                            key={cat.id}
-                            className="group relative overflow-hidden rounded-xl h-48 w-full shadow-sm hover:shadow-md transition-shadow cursor-pointer"
-                        >
-                            <Image
-                                src={cat.image}
-                                alt={cat.name}
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                sizes="(max-width: 448px) 50vw, 200px"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 flex flex-col justify-end">
-                                <h4 className="text-white font-bold text-base leading-tight">
-                                    {cat.name}
-                                </h4>
-                                <p className="text-white/80 text-xs mt-1">{cat.subtitle}</p>
+                        {/* Recommended for You */}
+                        <div className="px-4 pb-20">
+                            <div className="flex items-center gap-2 mb-4">
+                                <div className="h-6 w-1 bg-primary rounded-full" />
+                                <h3 className="text-slate-900 dark:text-white text-lg font-bold leading-tight">
+                                    Recommended for You
+                                </h3>
+                            </div>
+                            <div className="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-4 px-4">
+                                {loading
+                                    ? Array.from({ length: 4 }).map((_, i) => (
+                                        <div key={i} className="w-36 shrink-0 animate-pulse">
+                                            <div className="w-full aspect-square rounded-xl bg-slate-200 dark:bg-slate-800 mb-2" />
+                                            <div className="h-3 bg-slate-200 dark:bg-slate-800 rounded w-3/4 mb-1" />
+                                            <div className="h-3 bg-slate-200 dark:bg-slate-800 rounded w-1/2" />
+                                        </div>
+                                    ))
+                                    : recommended.map((product) => (
+                                        <div key={product.id} className="w-36 shrink-0 flex flex-col gap-2">
+                                            <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-gray-100">
+                                                <Image
+                                                    src={product.media_urls[0]}
+                                                    alt={product.title}
+                                                    fill
+                                                    className="object-cover"
+                                                    sizes="144px"
+                                                />
+                                                <button className="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-slate-400 hover:text-primary transition-colors">
+                                                    <span
+                                                        className="material-symbols-outlined text-[16px]"
+                                                        style={{ fontVariationSettings: "'FILL' 0" }}
+                                                    >
+                                                        favorite
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <p className="text-slate-900 dark:text-white font-semibold text-sm truncate">
+                                                    {product.title}
+                                                </p>
+                                                <p className="text-slate-500 text-xs">
+                                                    {CURRENCY}
+                                                    {(product.discount_price ?? product.selling_price).toLocaleString("en-IN")}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    ))}
                             </div>
                         </div>
-                    ))}
-                </div>
-
-                {/* Recommended for You */}
-                <div className="px-4 pb-20">
-                    <div className="flex items-center gap-2 mb-4">
-                        <div className="h-6 w-1 bg-primary rounded-full" />
-                        <h3 className="text-slate-900 dark:text-white text-lg font-bold leading-tight">
-                            Recommended for You
-                        </h3>
-                    </div>
-                    <div className="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-4 px-4">
-                        {recommended.map((product) => (
-                            <div key={product.id} className="w-36 shrink-0 flex flex-col gap-2">
-                                <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-gray-100">
-                                    <Image
-                                        src={product.images[0]}
-                                        alt={product.name}
-                                        fill
-                                        className="object-cover"
-                                        sizes="144px"
-                                    />
-                                    <button className="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-slate-400 hover:text-primary transition-colors">
-                                        <span
-                                            className="material-symbols-outlined text-[16px]"
-                                            style={{ fontVariationSettings: "'FILL' 0" }}
-                                        >
-                                            favorite
-                                        </span>
-                                    </button>
-                                </div>
-                                <div>
-                                    <p className="text-slate-900 dark:text-white font-semibold text-sm truncate">
-                                        {product.name}
-                                    </p>
-                                    <p className="text-slate-500 text-xs">
-                                        {CURRENCY}
-                                        {(product.salePrice ?? product.price).toLocaleString(
-                                            "en-IN",
-                                        )}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                    </>
+                )}
             </div>
         </div>
     );

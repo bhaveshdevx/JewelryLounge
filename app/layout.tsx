@@ -8,7 +8,8 @@
  * - Material Symbols Outlined icons via CDN
  * - ThemeProvider for Light/Dark/Luxury switching
  * - Header (auto-hide) + BottomNav (fixed)
- * - Mobile-first max-w-md centered layout
+ * - Mobile-first max-w-md centered layout (shop pages)
+ * - Full-width layout for /admin routes (PC-friendly)
  * ============================================================
  */
 
@@ -17,9 +18,9 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import "@/styles/themes.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { Header } from "@/components/layout/header";
-import { BottomNav } from "@/components/layout/bottom-nav";
+import { AuthProvider } from "@/components/providers/auth-provider";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
+import { LayoutShell } from "@/components/layout/layout-shell";
 
 // ---------------------------------------------------------------------------
 // Font Configuration — Plus Jakarta Sans (matches HTML mockups)
@@ -84,17 +85,9 @@ export default function RootLayout({
         className={`${plusJakartaSans.variable} font-sans antialiased bg-[#f8f6f7] dark:bg-[#221019] selection:bg-primary selection:text-white`}
       >
         <ThemeProvider>
-          {/* Mobile-first centered container with shadow (like mockups) */}
-          <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-slate-900 shadow-2xl">
-            {/* Header — auto-hides on scroll */}
-            <Header />
-
-            {/* Main Content */}
-            <main className="flex-1 pb-20">{children}</main>
-
-            {/* Bottom Navigation — fixed at bottom */}
-            <BottomNav />
-          </div>
+          <AuthProvider>
+            <LayoutShell>{children}</LayoutShell>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
