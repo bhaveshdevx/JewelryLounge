@@ -283,9 +283,9 @@ export default function DiscoverPage() {
                                     key={cat.id}
                                     className="group relative overflow-hidden rounded-xl h-48 w-full shadow-sm hover:shadow-md transition-shadow cursor-pointer block"
                                 >
-                                    {cat.image_url && (
+                                    {cat.image && (
                                         <Image
-                                            src={cat.image_url}
+                                            src={cat.image}
                                             alt={cat.name}
                                             fill
                                             className="object-cover transition-transform duration-500 group-hover:scale-110"
