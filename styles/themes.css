@@ -14,67 +14,85 @@
  * Theme Palette Philosophy:
  *   Light   → Clean whites, soft neutrals, modern minimalism
  *   Dark    → Deep charcoals, muted golds, sleek nighttime shopping
- *   Luxury  → Rich golds, deep blacks, premium velvet feel
+ *   Luxury  → Deep burgundy-black, rose gold accents, champagne text
  * ============================================================
  */
 
 /* ---------------------------------------------------------
- * LUXURY Theme — Premium gold & black palette
+ * LUXURY Theme — Royal Green + Gold
  *
- * Designed to feel like a high-end jewelry boutique.
- * Gold accents (#D4AF37) paired with rich dark backgrounds.
+ * Designed to feel like a high-end heritage boutique.
+ * Deep royal green tones with vibrant gold accents.
  * --------------------------------------------------------- */
 .luxury {
   /* Core backgrounds & foregrounds */
-  --background: oklch(0.12 0.005 60);           /* Very deep charcoal with warm undertone */
-  --foreground: oklch(0.93 0.02 85);             /* Warm off-white / champagne */
+  --background: oklch(0.20 0.04 150);
+  /* Deep royal green */
+  --foreground: oklch(0.90 0.08 85);
+  /* Gold-tinted white */
 
   /* Card surfaces */
-  --card: oklch(0.16 0.008 60);                  /* Slightly lighter than background */
-  --card-foreground: oklch(0.93 0.02 85);
+  --card: oklch(0.25 0.05 150);
+  /* Slightly lighter deep green */
+  --card-foreground: oklch(0.95 0.05 85);
 
   /* Popover (menus, dropdowns) */
-  --popover: oklch(0.16 0.008 60);
-  --popover-foreground: oklch(0.93 0.02 85);
+  --popover: oklch(0.25 0.05 150);
+  --popover-foreground: oklch(0.95 0.05 85);
 
-  /* Primary action — Rich Gold */
-  --primary: oklch(0.78 0.14 85);                /* Gold (#D4AF37 equivalent in oklch) */
-  --primary-foreground: oklch(0.12 0.005 60);    /* Dark text on gold buttons */
+  /* Primary action — Vibrant Gold */
+  --primary: oklch(0.75 0.15 85);
+  /* Gold */
+  --primary-foreground: oklch(0.15 0.04 150);
+  /* Dark Green text on Gold */
 
-  /* Secondary — Muted bronze */
-  --secondary: oklch(0.22 0.015 60);
-  --secondary-foreground: oklch(0.88 0.06 85);
+  /* Secondary — Olive-tinged green */
+  --secondary: oklch(0.35 0.06 140);
+  /* Light forest green accent */
+  --secondary-foreground: oklch(0.90 0.08 85);
+  /* Gold */
 
   /* Muted elements */
-  --muted: oklch(0.20 0.01 60);
-  --muted-foreground: oklch(0.60 0.04 85);
+  --muted: oklch(0.30 0.05 145);
+  /* Muted pine green */
+  --muted-foreground: oklch(0.65 0.06 145);
+  /* Faded green/gold */
 
-  /* Accent — Warm gold highlight */
-  --accent: oklch(0.25 0.03 75);
-  --accent-foreground: oklch(0.88 0.06 85);
+  /* Accent — Emerald highlight */
+  --accent: oklch(0.40 0.10 140);
+  /* Emerald tint */
+  --accent-foreground: oklch(0.95 0.08 85);
+  /* Champagne */
 
-  /* Destructive — Warm red that matches the palette */
-  --destructive: oklch(0.65 0.22 25);
+  /* Destructive */
+  --destructive: oklch(0.60 0.20 20);
 
   /* Borders & inputs */
-  --border: oklch(0.30 0.03 75);
-  --input: oklch(0.25 0.02 65);
-  --ring: oklch(0.78 0.14 85);                   /* Gold ring/focus color */
+  --border: oklch(0.35 0.06 145);
+  /* Muted green border */
+  --input: oklch(0.30 0.05 150);
+  --ring: oklch(0.75 0.15 85);
+  /* Gold focus ring */
 
-  /* Chart colors — Warm luxury palette */
-  --chart-1: oklch(0.78 0.14 85);                /* Gold */
-  --chart-2: oklch(0.60 0.10 50);                /* Bronze */
-  --chart-3: oklch(0.50 0.08 30);                /* Copper */
-  --chart-4: oklch(0.70 0.15 70);                /* Amber */
-  --chart-5: oklch(0.55 0.12 40);                /* Rose gold */
+  /* Chart colors */
+  --chart-1: oklch(0.75 0.15 85);
+  /* Gold */
+  --chart-2: oklch(0.60 0.12 140);
+  /* Vibrant green */
+  --chart-3: oklch(0.85 0.10 90);
+  /* Light champagne */
+  --chart-4: oklch(0.40 0.10 140);
+  /* Emerald */
+  --chart-5: oklch(0.50 0.08 145);
+  /* Teal-green */
 
   /* Sidebar */
-  --sidebar: oklch(0.14 0.006 60);
-  --sidebar-foreground: oklch(0.93 0.02 85);
-  --sidebar-primary: oklch(0.78 0.14 85);
-  --sidebar-primary-foreground: oklch(0.12 0.005 60);
-  --sidebar-accent: oklch(0.22 0.015 60);
-  --sidebar-accent-foreground: oklch(0.88 0.06 85);
-  --sidebar-border: oklch(0.30 0.03 75);
-  --sidebar-ring: oklch(0.78 0.14 85);
+  --sidebar: oklch(0.22 0.04 150);
+  --sidebar-foreground: oklch(0.95 0.05 85);
+  --sidebar-primary: oklch(0.75 0.15 85);
+  --sidebar-primary-foreground: oklch(0.15 0.04 150);
+  --sidebar-accent: oklch(0.35 0.06 140);
+  --sidebar-accent-foreground: oklch(0.95 0.08 85);
+  --sidebar-border: oklch(0.35 0.06 145);
+  --sidebar-ring: oklch(0.75 0.15 85);
 }

@@ -27,12 +27,40 @@ export async function getAllProducts() {
 export async function upsertProduct(
     product: Partial<Product> & { title: string; selling_price: number },
 ) {
-    if (product.id) {
+    // Only extract fields that exist in the `products` table schema
+    const {
+        id,
+        title,
+        description,
+        cost_price,
+        selling_price,
+        discount_price,
+        category_id,
+        media_urls,
+        attributes,
+        stock_count,
+        is_active
+    } = product;
+
+    const payload = {
+        title,
+        description,
+        cost_price,
+        selling_price,
+        discount_price,
+        category_id,
+        media_urls,
+        attributes,
+        stock_count,
+        is_active
+    };
+
+    if (id) {
         // Update existing
         return supabase
             .from("products")
-            .update(product)
-            .eq("id", product.id)
+            .update(payload)
+            .eq("id", id)
             .select()
             .single();
     }
@@ -40,7 +68,7 @@ export async function upsertProduct(
     // Insert new
     return supabase
         .from("products")
-        .insert(product)
+        .insert(payload)
         .select()
         .single();
 }

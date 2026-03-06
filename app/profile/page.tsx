@@ -16,11 +16,12 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useThemeStore } from "@/stores/theme-store";
 import { useAuthStore } from "@/stores/auth-store";
 import { getLikedItems } from "@/lib/supabase/queries";
+import { uploadAvatar, getAvatarUrl } from "@/lib/supabase/storage";
 import { CURRENCY } from "@/lib/constants";
 import type { Theme, Product } from "@/types";
 
@@ -49,6 +50,9 @@ export default function ProfilePage() {
         useAuthStore();
     const [vaultItems, setVaultItems] = useState<Product[]>([]);
     const [vaultLoading, setVaultLoading] = useState(false);
+    const [avatarUploading, setAvatarUploading] = useState(false);
+    const [customAvatarUrl, setCustomAvatarUrl] = useState<string | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     // Auth form state
     const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
@@ -268,8 +272,8 @@ export default function ProfilePage() {
                                     key={t.id}
                                     onClick={() => setTheme(t.id)}
                                     className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-xs font-medium transition-all ${theme === t.id
-                                            ? "bg-primary text-white shadow-sm font-bold"
-                                            : "text-slate-500 dark:text-slate-400 hover:text-primary"
+                                        ? "bg-primary text-white shadow-sm font-bold"
+                                        : "text-slate-500 dark:text-slate-400 hover:text-primary"
                                         }`}
                                 >
                                     <span className="material-symbols-outlined text-[16px]">
@@ -296,23 +300,49 @@ export default function ProfilePage() {
 
     // ---- Signed in ----
     const displayName = profile?.full_name || user?.user_metadata?.full_name || "User";
-    const avatarUrl = user?.user_metadata?.avatar_url || "";
+    const avatarUrl = customAvatarUrl || user?.user_metadata?.avatar_url || "";
     const memberSince = profile?.created_at
         ? new Date(profile.created_at).getFullYear()
         : new Date().getFullYear();
 
+    const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file || !user) return;
+
+        // Validate file
+        if (file.size > 5 * 1024 * 1024) {
+            alert("Image must be under 5MB");
+            return;
+        }
+        if (!file.type.startsWith("image/")) {
+            alert("Please select an image file");
+            return;
+        }
+
+        setAvatarUploading(true);
+        const { data, error } = await uploadAvatar(user.id, file);
+        if (!error && data) {
+            const ext = file.name.split(".").pop() || "jpg";
+            const url = getAvatarUrl(user.id, `avatar.${ext}`);
+            // Add cache-busting timestamp
+            setCustomAvatarUrl(url + "?t=" + Date.now());
+        }
+        setAvatarUploading(false);
+    };
+
     return (
         <div className="flex flex-col min-h-[calc(100vh-7rem)]">
+            {/* Hidden file input for avatar upload */}
+            <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleAvatarUpload}
+            />
+
             {/* Header Section */}
             <div className="relative pt-8 pb-6 px-6 bg-slate-50 dark:bg-slate-900/50">
-                {/* Settings Gear */}
-                <div className="absolute top-0 right-0 p-4">
-                    <button className="text-slate-500 hover:text-primary dark:text-slate-400 transition-colors">
-                        <span className="material-symbols-outlined text-[24px]">
-                            settings
-                        </span>
-                    </button>
-                </div>
 
                 <div className="flex flex-col items-center gap-4">
                     {/* Avatar */}
@@ -334,12 +364,20 @@ export default function ProfilePage() {
                                 </div>
                             )}
                         </div>
-                        {/* Edit badge */}
-                        <div className="absolute bottom-1 right-1 bg-primary text-white rounded-full p-1.5 shadow-md flex items-center justify-center">
-                            <span className="material-symbols-outlined text-[16px] font-bold">
-                                edit
-                            </span>
-                        </div>
+                        {/* Edit badge — triggers file upload */}
+                        <button
+                            onClick={() => fileInputRef.current?.click()}
+                            disabled={avatarUploading}
+                            className="absolute bottom-1 right-1 bg-primary text-white rounded-full p-1.5 shadow-md flex items-center justify-center hover:bg-primary/90 transition-colors"
+                        >
+                            {avatarUploading ? (
+                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                            ) : (
+                                <span className="material-symbols-outlined text-[16px] font-bold">
+                                    edit
+                                </span>
+                            )}
+                        </button>
                     </div>
 
                     {/* Name & subtitle */}
@@ -419,13 +457,15 @@ export default function ProfilePage() {
                                                 favorite
                                             </span>
                                         </div>
-                                        <Image
-                                            src={product.media_urls[0]}
-                                            alt={product.title}
-                                            fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                            sizes="160px"
-                                        />
+                                        {product.media_urls?.[0] && (
+                                            <Image
+                                                src={product.media_urls[0]}
+                                                alt={product.title}
+                                                fill
+                                                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                                sizes="160px"
+                                            />
+                                        )}
                                     </div>
                                     <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">
                                         {product.title}
@@ -460,9 +500,14 @@ export default function ProfilePage() {
                                     </span>
                                 </div>
                                 <div className="flex-1">
-                                    <p className="text-sm font-bold text-slate-900 dark:text-white">
-                                        {item.title}
-                                    </p>
+                                    <div className="flex items-center gap-2">
+                                        <p className="text-sm font-bold text-slate-900 dark:text-white">
+                                            {item.title}
+                                        </p>
+                                        <span className="text-[9px] font-bold bg-primary/10 text-primary px-1.5 py-0.5 rounded-full">
+                                            Soon
+                                        </span>
+                                    </div>
                                     <p className="text-xs text-slate-500 dark:text-slate-400">
                                         {item.subtitle}
                                     </p>
@@ -508,25 +553,64 @@ export default function ProfilePage() {
                         </div>
                     </div>
 
-                    {/* Customer Support */}
-                    <button className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group w-full text-left">
-                        <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center group-hover:bg-slate-200 dark:group-hover:bg-slate-700 transition-colors">
-                            <span className="material-symbols-outlined text-[20px]">
-                                support_agent
-                            </span>
+                    {/* Customer Support Section */}
+                    <div className="mt-2">
+                        <div className="flex items-center gap-3 p-3">
+                            <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center">
+                                <span className="material-symbols-outlined text-[20px]">
+                                    support_agent
+                                </span>
+                            </div>
+                            <div>
+                                <p className="text-sm font-bold text-slate-900 dark:text-white">Customer Support</p>
+                                <p className="text-xs text-slate-500 dark:text-slate-400">We&apos;re here to help</p>
+                            </div>
                         </div>
-                        <div className="flex-1">
-                            <p className="text-sm font-bold text-slate-900 dark:text-white">
-                                Customer Support
-                            </p>
-                            <p className="text-xs text-slate-500 dark:text-slate-400">
-                                Get help with your orders
-                            </p>
+
+                        {/* Quick Contact Actions */}
+                        <div className="flex gap-2 px-3 pb-3">
+                            <a
+                                href="mailto:support@jewelrylounge.com?subject=Support Request"
+                                className="flex-1 flex flex-col items-center gap-1 py-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
+                            >
+                                <span className="material-symbols-outlined text-primary text-[20px]">mail</span>
+                                <span className="text-[10px] font-bold text-slate-600 dark:text-slate-300">Email</span>
+                            </a>
+                            <a
+                                href="tel:+919999999999"
+                                className="flex-1 flex flex-col items-center gap-1 py-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
+                            >
+                                <span className="material-symbols-outlined text-primary text-[20px]">call</span>
+                                <span className="text-[10px] font-bold text-slate-600 dark:text-slate-300">Call</span>
+                            </a>
+                            <a
+                                href="https://wa.me/919999999999?text=Hi%20Jewelry%20Lounge%2C%20I%20need%20help%20with%20my%20order"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-1 flex flex-col items-center gap-1 py-3 bg-green-50 dark:bg-green-900/20 rounded-xl hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors"
+                            >
+                                <span className="material-symbols-outlined text-green-600 text-[20px]">chat</span>
+                                <span className="text-[10px] font-bold text-green-700 dark:text-green-400">WhatsApp</span>
+                            </a>
                         </div>
-                        <span className="material-symbols-outlined text-slate-300 text-[20px]">
-                            chevron_right
-                        </span>
-                    </button>
+
+                        {/* FAQ */}
+                        <div className="px-3 pb-2 space-y-1">
+                            {[
+                                { q: "How long does shipping take?", a: "Standard delivery takes 5-7 business days. Express delivery takes 2-3 days." },
+                                { q: "What is your return policy?", a: "We offer 7-day easy returns on all unworn items with original packaging." },
+                                { q: "How can I track my order?", a: "Once shipped, you'll receive a tracking link via email and SMS." },
+                            ].map((faq) => (
+                                <details key={faq.q} className="group bg-slate-50 dark:bg-slate-800/30 rounded-lg">
+                                    <summary className="flex items-center justify-between p-3 cursor-pointer list-none text-sm font-medium text-slate-700 dark:text-slate-300">
+                                        {faq.q}
+                                        <span className="material-symbols-outlined text-[16px] text-slate-400 transition-transform group-open:rotate-180">expand_more</span>
+                                    </summary>
+                                    <p className="px-3 pb-3 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{faq.a}</p>
+                                </details>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
                 {/* Log Out */}

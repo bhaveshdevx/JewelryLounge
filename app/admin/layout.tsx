@@ -52,15 +52,17 @@ export default function AdminLayout({
             {/* ──────── Desktop Sidebar (hidden on mobile) ──────── */}
             <aside className="hidden lg:flex flex-col w-64 bg-slate-900 text-white shrink-0 fixed inset-y-0 left-0 z-30">
                 {/* Brand */}
-                <div className="flex items-center gap-2.5 px-5 py-5 border-b border-slate-800">
-                    <span className="material-symbols-outlined text-primary text-[28px]">
-                        admin_panel_settings
-                    </span>
-                    <div>
-                        <h1 className="text-base font-bold leading-tight">Jewelry Lounge</h1>
-                        <p className="text-[10px] text-slate-400 font-medium">Admin Panel</p>
+                <Link href="/">
+                    <div className="flex items-center gap-2.5 px-5 py-5 border-b border-slate-800">
+                        <span className="material-symbols-outlined text-primary text-[28px]">
+                            admin_panel_settings
+                        </span>
+                        <div>
+                            <h1 className="text-base font-bold leading-tight">Jewelry Lounge</h1>
+                            <p className="text-[10px] text-slate-400 font-medium">Admin Panel</p>
+                        </div>
                     </div>
-                </div>
+                </Link>
 
                 {/* Navigation Links */}
                 <nav className="flex-1 py-4 px-3 space-y-1">

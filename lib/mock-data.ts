@@ -19,39 +19,39 @@ import type { Product, Category } from "@/types";
 
 export const MOCK_CATEGORIES: Category[] = [
     {
-        id: "cat-1",
-        name: "Campus",
-        slug: "campus",
+        id: "cat-necklaces",
+        name: "Necklaces",
+        slug: "necklaces",
         image:
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuD5_fAA6XlFp8djyGLdnzQ61v-Ne-JWIib8MaI-Rs9S3LUQHghFt5hyK_NTlv4hLs0G0tJe3AIcXUr9-59vRcQil2GLCTfwZS-kNYnAvhFKUpv-P5JpSAnFDqVjTmBxnwmS9a_kQjse7XkRpy2Y3p5MXqg_E55M758IhjWq_nOYhxTUZE2W26wWMG1OTDB9udwuuy7exDLPKdBxOqOdmH_lFdtui7Am9qlzp2Gmd9vA7FUuvDcgg9WAdRoH3RbJjnqTTuXU5uP8AuE",
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuDT375_lHBGeGLuyGwQhaMsXxx3uj994SuOiyaLDIPf9LxFBd-nmwfXrl0ppgSVoXuE_EEXNipmGQO63NEB8OUTl5x_aOf-BcQDiDfB8T6_jWB5tE2I7PRyocp_2HbFS9Yb8WjU7A_m_uWLXjGx0SVNyda_YU47srIM8N9Ny8kMtinhvP3cc_SV8sGeWms7IPXuoEyKUXwobiWKepbdvdVy-0qtzFDvfWkJZuVDCObuxGNg0tptenRjz0-SRkvsBfvHKAGiN14s21Y",
     },
     {
-        id: "cat-2",
-        name: "Office",
-        slug: "office",
+        id: "cat-earrings",
+        name: "Earrings",
+        slug: "earrings",
         image:
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuBtKfmc-Vr8wChS2z6Zmi0HP2xveDtS8dtJLHG15z608OnM4Jolbrz8c93Q9HwMNGjI5LKsKtXQEL-iZsY5DaBEJ9dXjU66RvPawELvs9GGfWVqjPaJ28AaHcaGCxrFq6ahT2cyhT7Zbek0jpdzFNQSR5uw4mFHo6jsPPwk5EkJL2nJIxmpH_8KcePoBIp7XwBSmZ9Xq5Cp7pem05NaH-ZPzmbYtc4SJfYLAkQDsOlcZehefzsU1auO2OPFE57b3DbjLM6pYCym0ZE",
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuBY1QwOrs-B5WP6szzXQSBcGlpRhmYq3HX4ZdR3-kH9_6XV8TgEjgFlqqz_L0VgoTrNp8O-1OifAoI7HuDhpsURlxzoIa5qlBrSL53vcRrHUHa_pX75VW_hYSf-dkabiY7F7k_ycBRDre61CKfIZnAb349WhdFVk3XuHkeucHE4xFLnTMTe5MGAwu4gspjC5LKffMSGm2qY51p-NGcqiR3Qp0pMz3g2QixwSgTpiKtQcZ4tefc1XteahoyH7ku1iYci9CgcvfytTJo",
     },
     {
-        id: "cat-3",
-        name: "Wedding",
-        slug: "wedding",
+        id: "cat-rings",
+        name: "Rings",
+        slug: "rings",
         image:
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuBVmz5L3THjFbi5UjiTs_y0w-LYvjLG-ll2_FcsRzya5K2UsKpB9xj2Qu5-yGnQAlWDF6mLZgl4EvD68edHM6EW3JBSXbYyjDjxqU-vMCtSNAUotSdpWiDXttrbMKfmx5lEYHEDjZaFIL-m5MniFtlMhHLzZKu-TtlevIsPjQEoAIyPlOpBwmRvYASe2k7oN6l8chF9BHw1pB23bMvGfCwCVDm91cDCFdsdFgGB5-ctw2MxeLHEhbRqrfbtqGadFLIvxp-aVu3BJ-8",
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuD0y4Q0amuV_PeXpmTER5eEjjJEjiHHlal9PUunrrVsQbbbfdyQwaYWlQysoandnLJkQuODqnyXOdl5t32RVHXxpiqZsYIm6oJHTizxUMHVZguvWQwlNdTTfH_97OmppB_iJu1pmD3CuDd_rskGST022sC8kjX5nYfwrVg0wzH0NOmj_EACpefVzmN05wsIkih83CPLrJOdNGETOXz-ptTdIhKaFbQpvPQ-1uLxdsvw9r4Az1E93G3cGqS8txZv_6wj4l4XN3Zs8J8",
     },
     {
-        id: "cat-4",
-        name: "Party",
-        slug: "party",
+        id: "cat-bracelets",
+        name: "Bracelets",
+        slug: "bracelets",
         image:
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuBeDUh9JnSkdBKP8FqZScIseiCm5qnnCw5QGWIso9euIeCUI0teiIwnUXaO7Hlcv2cm1Lt1KTMtKnEovcWbibvBh1j3xXn4qh9UknZTSSZH622wM8mmh0Vov3gfCtnujfrfWLllBb_V5PKPPm7Tktu2xMvcvB57-Vah_YJXYZpKoj1-xwsbD5l00Y0dy51Nt1VGlR3YofQVLQpCp3bHIW1qrZO_g0pxaXrU-XcvhVzoBOyoQzba7EKW2DCtBK89L-9pJNHN5XukQz4",
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuBJxC4IAG1iGx-6ppSWbP3qtdOdXnUvDR_E7-gZY8ClwVlZlwxFDWbktYGwJxWzC0acdxZTA1vdxHPBmzIgK3k4doAxoydzoLAAJtAPF1aCp0r41BI9S5cbtdZ0iIN5FyIUNP3gz3n56tzagqltaycPQBiTatABXWTN2Gl5dgkdCTHpuQtVvH4z6SBZ9dIj2WFOOx2t3EIF3rvDbplf6WZC6Y7uwLi7xa2QDOHgree2mglw7gmTyZMCdBU_basXva4cIfGCCSekMZQ",
     },
     {
-        id: "cat-5",
-        name: "Gold",
-        slug: "gold",
+        id: "cat-bangles",
+        name: "Bangles",
+        slug: "bangles",
         image:
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuBMC_2z9czs-B3oTMd4KyJMsloSJI2YMnGjkQRS5HzjEenOP36IyHaymopgVy_kE5pPT5VWYeLQ4g_LI9G-h4joGh3olMiJvtEJqM82axiJ4EmsM3OUMF1Zh2vhhxdwWincQpXvHQVJBCfIcPFr9MZm8VSgrioUQeLM1F3spmTPFWk-wKeEeCreMyxqDnH--KyIk-szwkmXGf7cIx7RwK7BK9JocJywT6l3Nq5t-UMJ5ShvOqf1wEifDa5uqe1BK8D8cdItVzRDQ_Q",
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuCdkOsaoWv2Zo9X7Cr60pk1RW05SM_KI9EMSIlidykWV06NGfwVdSiliA8ob1FVc7Ka2VeVSoz8kvqVLWMsvn8yrmOMTuVUbvs812wR4b80-z4EIRlS-ZueXDc7pF1cV01rrbcBGDBHeWhdRZdAxkDyS8HlaEcjDNvmFqA-LR4Nukl2k5A-PerBqCJC-3Db03ra_NuNDviOPkc7E5qRxelwoCegh8uXINAMBaEa4oY7Gltoavi_pqwGHnZfGXtOXIj6IbJ8FQXbvX4",
     },
 ];
 

@@ -4,7 +4,7 @@
  * ============================================================
  *
  * 3:4 aspect ratio image card with:
- *  - Heart button (pop/bounce animation on click)
+ *  - Heart button (syncs with Supabase via likes-store)
  *  - Badge (Best Seller / New)
  *  - Product name, price, sale price with strikethrough, discount %
  *  - Tap image → opens Product Drawer
@@ -13,11 +13,13 @@
 
 "use client";
 
-import { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useCallback } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import type { Product } from "@/types";
 import { CURRENCY } from "@/lib/constants";
+import { useAuthStore } from "@/stores/auth-store";
+import { useLikesStore } from "@/stores/likes-store";
 
 interface ProductCardProps {
     product: Product;
@@ -26,7 +28,9 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, onTap }: ProductCardProps) {
-    const [liked, setLiked] = useState(false);
+    const user = useAuthStore((s) => s.user);
+    const isLiked = useLikesStore((s) => s.isLiked(product.id));
+    const toggleLike = useLikesStore((s) => s.toggleLike);
 
     /** Calculate discount percentage */
     const discount =
@@ -42,10 +46,14 @@ export function ProductCard({ product, onTap }: ProductCardProps) {
             ? "New"
             : null;
 
-    const handleLike = useCallback((e: React.MouseEvent) => {
-        e.stopPropagation();
-        setLiked((prev) => !prev);
-    }, []);
+    const handleLike = useCallback(
+        (e: React.MouseEvent) => {
+            e.stopPropagation();
+            if (!user) return; // Must be logged in to like
+            toggleLike(user.id, product.id);
+        },
+        [user, toggleLike, product.id],
+    );
 
     return (
         <div className="group relative flex flex-col gap-2">
@@ -68,14 +76,14 @@ export function ProductCard({ product, onTap }: ProductCardProps) {
                 <motion.button
                     onClick={handleLike}
                     whileTap={{ scale: 1.3 }}
-                    className={`absolute top-2 right-2 p-1.5 rounded-full backdrop-blur-sm shadow-sm transition-colors ${liked
+                    className={`absolute top-2 right-2 p-1.5 rounded-full backdrop-blur-sm shadow-sm transition-colors ${isLiked
                         ? "bg-white/80 text-red-500"
                         : "bg-white/80 text-slate-400 hover:text-red-500"
                         }`}
                 >
                     <span
                         className="material-symbols-outlined text-lg"
-                        style={{ fontVariationSettings: `'FILL' ${liked ? 1 : 0}` }}
+                        style={{ fontVariationSettings: `'FILL' ${isLiked ? 1 : 0}` }}
                     >
                         favorite
                     </span>

@@ -38,18 +38,20 @@ export function VibeBubbles({ activeVibe, onVibeChange }: VibeBubblesProps) {
                             {/* Gradient ring wrapper */}
                             <div
                                 className={`p-[2px] rounded-full transition-transform duration-300 group-hover:scale-105 ${showGradient
-                                        ? "bg-gradient-to-tr from-primary to-orange-400"
-                                        : "bg-gradient-to-tr from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600"
+                                    ? "bg-gradient-to-tr from-primary to-orange-400"
+                                    : "bg-gradient-to-tr from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600"
                                     }`}
                             >
                                 <div className="h-16 w-16 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 overflow-hidden relative">
-                                    <Image
-                                        src={cat.image}
-                                        alt={cat.name}
-                                        fill
-                                        className="object-cover"
-                                        sizes="64px"
-                                    />
+                                    {cat.image && (
+                                        <Image
+                                            src={cat.image}
+                                            alt={cat.name}
+                                            fill
+                                            className="object-cover"
+                                            sizes="64px"
+                                        />
+                                    )}
                                 </div>
                             </div>
                             <span className="text-xs font-medium text-slate-700 dark:text-slate-300">

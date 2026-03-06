@@ -129,6 +129,11 @@ export async function getProductsByCategory(categoryId: string) {
  *   const { data, error } = await searchProducts("gold ring");
  */
 export async function searchProducts(query: string) {
+    if (!query) return { data: [], error: null };
+
+    // Using a safer approach for searching, matching words anywhere in title or description.
+    // If description is null, it might cause issues in some older Supabase versions, but
+    // usually `or()` handles it. We'll simplify the match.
     return supabase
         .from("products")
         .select("*")

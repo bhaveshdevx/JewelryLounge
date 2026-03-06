@@ -51,7 +51,7 @@ export interface Product {
     category_id: string;
 
     /** Array of image/video URLs (first = hero/thumbnail) */
-    media_urls: string[];
+    media_urls: string[] | null;
 
     /**
      * Flexible product attributes stored as JSON.

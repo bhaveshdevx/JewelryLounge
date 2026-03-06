@@ -89,6 +89,7 @@ export default function RootLayout({
             <LayoutShell>{children}</LayoutShell>
           </AuthProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

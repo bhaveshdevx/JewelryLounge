@@ -30,22 +30,24 @@ export function HeroCarousel() {
                         className="flex-[0_0_90%] relative rounded-xl overflow-hidden aspect-[21/9] group shadow-sm cursor-pointer"
                     >
                         {/* Banner Image */}
-                        <Image
-                            src={banner.image}
-                            alt={banner.title}
-                            fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-105"
-                            sizes="(max-width: 448px) 90vw, 400px"
-                            priority
-                        />
+                        {banner.image && (
+                            <Image
+                                src={banner.image}
+                                alt={banner.title}
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                sizes="(max-width: 448px) 90vw, 400px"
+                                priority
+                            />
+                        )}
 
                         {/* Gradient Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
                             {/* Badge */}
                             <span
                                 className={`text-[10px] font-bold px-2 py-0.5 rounded w-fit mb-1 uppercase tracking-wide ${banner.badgeVariant === "primary"
-                                        ? "bg-primary text-white"
-                                        : "bg-white text-slate-900"
+                                    ? "bg-primary text-white"
+                                    : "bg-white text-slate-900"
                                     }`}
                             >
                                 {banner.badge}

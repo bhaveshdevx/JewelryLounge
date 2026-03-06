@@ -20,6 +20,8 @@ import Image from "next/image";
 import type { Product } from "@/types";
 import { CURRENCY } from "@/lib/constants";
 import { useCartStore } from "@/stores/cart-store";
+import { useAuthStore } from "@/stores/auth-store";
+import { useLikesStore } from "@/stores/likes-store";
 
 interface ProductDrawerProps {
     product: Product | null;
@@ -30,15 +32,18 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
     const [activeImageIndex, setActiveImageIndex] = useState(0);
     const [addedToCart, setAddedToCart] = useState(false);
     const addItem = useCartStore((s) => s.addItem);
+    const user = useAuthStore((s) => s.user);
+    const isWishlisted = useLikesStore((s) => product ? s.isWishlisted(product.id) : false);
+    const toggleWishlist = useLikesStore((s) => s.toggleWishlist);
 
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
     const handleAddToCart = useCallback(() => {
         if (!product) return;
-        addItem(product);
+        addItem(product, user?.id);
         setAddedToCart(true);
         setTimeout(() => setAddedToCart(false), 1500);
-    }, [product, addItem]);
+    }, [product, addItem, user]);
 
     const discount =
         product?.discount_price && product.discount_price < product.selling_price
@@ -93,25 +98,27 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                                 {/* Main image */}
                                 <div className="w-full h-full overflow-hidden" ref={emblaRef}>
                                     <div className="flex h-full">
-                                        {product.media_urls.map((img, i) => (
+                                        {(product.media_urls ?? []).map((img, i) => (
                                             <div key={i} className="flex-[0_0_100%] relative h-full">
-                                                <Image
-                                                    src={img}
-                                                    alt={`${product.title} view ${i + 1}`}
-                                                    fill
-                                                    className="object-cover"
-                                                    sizes="(max-width: 448px) 100vw, 448px"
-                                                    priority={i === 0}
-                                                />
+                                                {img && (
+                                                    <Image
+                                                        src={img}
+                                                        alt={`${product.title} view ${i + 1}`}
+                                                        fill
+                                                        className="object-cover"
+                                                        sizes="(max-width: 448px) 100vw, 448px"
+                                                        priority={i === 0}
+                                                    />
+                                                )}
                                             </div>
                                         ))}
                                     </div>
                                 </div>
 
                                 {/* Pagination dots */}
-                                {product.media_urls.length > 1 && (
+                                {(product.media_urls ?? []).length > 1 && (
                                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
-                                        {product.media_urls.map((_, i) => (
+                                        {(product.media_urls ?? []).map((_, i) => (
                                             <div
                                                 key={i}
                                                 className={`w-2 h-2 rounded-full shadow-sm ${i === activeImageIndex
@@ -125,9 +132,9 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                             </div>
 
                             {/* Thumbnail Strip */}
-                            {product.media_urls.length > 1 && (
+                            {(product.media_urls ?? []).length > 1 && (
                                 <div className="flex gap-3 px-5 py-4 overflow-x-auto no-scrollbar">
-                                    {product.media_urls.map((img, i) => (
+                                    {(product.media_urls ?? []).map((img, i) => (
                                         <button
                                             key={i}
                                             onClick={() => {
@@ -139,13 +146,15 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                                                 : "border border-slate-200 dark:border-slate-700"
                                                 }`}
                                         >
-                                            <Image
-                                                src={img}
-                                                alt={`Thumbnail ${i + 1}`}
-                                                width={64}
-                                                height={64}
-                                                className="w-full h-full object-cover rounded-md"
-                                            />
+                                            {img && (
+                                                <Image
+                                                    src={img}
+                                                    alt={`Thumbnail ${i + 1}`}
+                                                    width={64}
+                                                    height={64}
+                                                    className="w-full h-full object-cover rounded-md"
+                                                />
+                                            )}
                                         </button>
                                     ))}
                                 </div>
@@ -205,12 +214,22 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                                             </span>
                                         </summary>
                                         <div className="text-slate-500 text-sm mt-3">
-                                            <ul className="list-disc pl-4 space-y-1">
-                                                <li>Hypoallergenic surgical steel posts</li>
-                                                <li>Matte rubberized coating</li>
-                                                <li>Avoid direct contact with perfumes</li>
-                                                <li>Wipe with a soft cloth after use</li>
-                                            </ul>
+                                            {product.attributes?.material || product.attributes?.care ? (
+                                                <ul className="list-disc pl-4 space-y-1">
+                                                    {product.attributes.material && (
+                                                        <li><strong>Material:</strong> {product.attributes.material}</li>
+                                                    )}
+                                                    {product.attributes.care && (
+                                                        <li><strong>Care:</strong> {product.attributes.care}</li>
+                                                    )}
+                                                </ul>
+                                            ) : (
+                                                <ul className="list-disc pl-4 space-y-1">
+                                                    <li>Premium quality materials</li>
+                                                    <li>Avoid direct contact with perfumes and harsh chemicals</li>
+                                                    <li>Wipe with a soft cloth after use</li>
+                                                </ul>
+                                            )}
                                         </div>
                                     </details>
                                 </div>
@@ -240,8 +259,22 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                         <div className="absolute bottom-0 left-0 w-full bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-5 py-4 z-30">
                             <div className="flex items-center gap-4">
                                 {/* Wishlist Button */}
-                                <button className="flex items-center justify-center w-12 h-12 rounded-full border border-slate-200 dark:border-slate-600 text-slate-400 hover:text-primary hover:border-primary transition-colors bg-white dark:bg-slate-800">
-                                    <span className="material-symbols-outlined">favorite</span>
+                                <button
+                                    onClick={() => {
+                                        if (!user || !product) return;
+                                        toggleWishlist(user.id, product.id);
+                                    }}
+                                    className={`flex items-center justify-center w-12 h-12 rounded-full border transition-colors bg-white dark:bg-slate-800 ${isWishlisted
+                                        ? "border-primary text-primary"
+                                        : "border-slate-200 dark:border-slate-600 text-slate-400 hover:text-primary hover:border-primary"
+                                        }`}
+                                >
+                                    <span
+                                        className="material-symbols-outlined"
+                                        style={{ fontVariationSettings: `'FILL' ${isWishlisted ? 1 : 0}` }}
+                                    >
+                                        bookmark
+                                    </span>
                                 </button>
 
                                 {/* Add to Cart Button */}

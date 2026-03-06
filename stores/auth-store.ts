@@ -70,6 +70,18 @@ let fetchProfileInFlight: string | null = null;
 // Store Implementation
 // ---------------------------------------------------------------------------
 
+// Check if you are running locally or on Vercel
+const getURL = () => {
+    let url =
+        process?.env?.NEXT_PUBLIC_SITE_URL ?? // Set this to your Vercel URL in production
+        process?.env?.NEXT_PUBLIC_VERCEL_URL ?? // Automatically set by Vercel
+        'http://localhost:3000/';
+
+    // Make sure it includes `https://`
+    url = url.startsWith('http') ? url : `https://${url}`;
+    return url;
+}
+
 export const useAuthStore = create<AuthState>()((set, get) => ({
     user: null,
     profile: null,
@@ -113,16 +125,31 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         return () => subscription.unsubscribe();
     },
 
+    // signInWithGoogle: async () => {
+    //     const { error } = await supabase.auth.signInWithOAuth({
+    //         provider: "google",
+    //         options: {
+    //             // redirectTo: `${window.location.origin}/`,
+    //             redirectTo: `${getURL()}auth/callback`,
+    //         },
+    //     });
+    //     if (error) {
+    //         console.error("Google sign-in error:", error.message);
+    //     }
+    // },
+
     signInWithGoogle: async () => {
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: "google",
+        await supabase.auth.signInWithOAuth({
+            provider: 'google',
             options: {
-                redirectTo: `${window.location.origin}/`,
+                // Notice we added 'code' to the flow
+                redirectTo: `${getURL()}/auth/callback`,
+                queryParams: {
+                    access_type: 'offline',
+                    prompt: 'consent',
+                },
             },
-        });
-        if (error) {
-            console.error("Google sign-in error:", error.message);
-        }
+        })
     },
 
     signInWithEmail: async (email, password) => {
@@ -134,12 +161,16 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         return null;
     },
 
+
+
     signUpWithEmail: async (email, password, fullName) => {
         const { error } = await supabase.auth.signUp({
             email,
             password,
             options: {
                 data: { full_name: fullName },
+                // Add this line right here!
+                emailRedirectTo: `${getURL()}/auth/callback`,
             },
         });
         if (error) return error.message;

@@ -30,9 +30,17 @@ const DISCOVER_PILLS = [
     { id: "material", label: "Material", hasDropdown: true },
 ];
 
+const FILTER_OPTIONS = {
+    occasion: ["Wedding", "Party", "Casual", "Gift"],
+    type: ["Necklace", "Ring", "Earrings", "Bracelet"],
+    price: ["Under ₹5000", "₹5000 - ₹20000", "Above ₹20000"],
+    material: ["Gold", "Silver", "Platinum", "Diamond"]
+};
+
 export default function DiscoverPage() {
     const [searchQuery, setSearchQuery] = useState("");
     const [activeFilter, setActiveFilter] = useState("all");
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [recentSearches, setRecentSearches] = useState([
         "Vintage Pearl Necklace",
         "Silver Rings",
@@ -44,7 +52,7 @@ export default function DiscoverPage() {
     // Fetch recommended products from DB
     useEffect(() => {
         setLoading(true);
-        getProducts({ limit: 4, activeOnly: true }).then(({ data }) => {
+        getProducts({ limit: 4, activeOnly: true, tag: "trending" }).then(({ data }) => {
             setRecommended((data as Product[]) ?? []);
             setLoading(false);
         });
@@ -142,13 +150,15 @@ export default function DiscoverPage() {
                                 {searchResults.map((product) => (
                                     <div key={product.id} className="flex flex-col gap-2">
                                         <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-gray-100">
-                                            <Image
-                                                src={product.media_urls[0]}
-                                                alt={product.title}
-                                                fill
-                                                className="object-cover"
-                                                sizes="(max-width: 448px) 50vw, 200px"
-                                            />
+                                            {product.media_urls?.[0] && (
+                                                <Image
+                                                    src={product.media_urls[0]}
+                                                    alt={product.title}
+                                                    fill
+                                                    className="object-cover"
+                                                    sizes="(max-width: 448px) 50vw, 200px"
+                                                />
+                                            )}
                                         </div>
                                         <div>
                                             <p className="text-slate-900 dark:text-white font-semibold text-sm truncate">
@@ -166,25 +176,54 @@ export default function DiscoverPage() {
                     </div>
                 ) : (
                     <>
-                        {/* Filter Pills */}
-                        <div className="flex gap-2.5 px-4 pb-4 overflow-x-auto no-scrollbar w-full">
-                            {DISCOVER_PILLS.map((pill) => (
-                                <button
-                                    key={pill.id}
-                                    onClick={() => setActiveFilter(pill.id)}
-                                    className={`flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full px-4 active:scale-95 transition-transform text-sm font-medium ${activeFilter === pill.id
-                                        ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm"
-                                        : "bg-slate-100 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700"
-                                        }`}
-                                >
-                                    {pill.label}
-                                    {pill.hasDropdown && (
-                                        <span className="material-symbols-outlined text-slate-400 text-[18px]">
-                                            keyboard_arrow_down
-                                        </span>
-                                    )}
-                                </button>
-                            ))}
+                        {/* Filter Pills Area */}
+                        <div className="relative w-full z-20">
+                            {/* Filter Pills */}
+                            <div className="flex gap-2.5 px-4 pb-4 overflow-x-auto no-scrollbar w-full">
+                                {DISCOVER_PILLS.map((pill) => (
+                                    <button
+                                        key={pill.id}
+                                        onClick={() => {
+                                            setActiveFilter(pill.id);
+                                            if (pill.hasDropdown) {
+                                                setOpenDropdown(openDropdown === pill.id ? null : pill.id);
+                                            } else {
+                                                setOpenDropdown(null);
+                                                setSearchQuery(""); // Clear search on "All"
+                                            }
+                                        }}
+                                        className={`flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full px-4 active:scale-95 transition-transform text-sm font-medium ${activeFilter === pill.id
+                                            ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm"
+                                            : "bg-slate-100 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700"
+                                            }`}
+                                    >
+                                        {pill.label}
+                                        {pill.hasDropdown && (
+                                            <span className="material-symbols-outlined text-slate-400 text-[18px]">
+                                                keyboard_arrow_down
+                                            </span>
+                                        )}
+                                    </button>
+                                ))}
+                            </div>
+
+                            {/* Dropdown Menu */}
+                            {openDropdown && (
+                                <div className="absolute top-10 left-4 z-30 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 p-2 min-w-[160px] flex flex-col gap-1">
+                                    {FILTER_OPTIONS[openDropdown as keyof typeof FILTER_OPTIONS]?.map(option => (
+                                        <button
+                                            key={option}
+                                            onClick={() => {
+                                                setSearchQuery(option);
+                                                setOpenDropdown(null);
+                                            }}
+                                            className="text-left px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                                        >
+                                            {option}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
 
                         {/* Recent Searches */}
@@ -237,13 +276,15 @@ export default function DiscoverPage() {
                                     key={cat.id}
                                     className="group relative overflow-hidden rounded-xl h-48 w-full shadow-sm hover:shadow-md transition-shadow cursor-pointer"
                                 >
-                                    <Image
-                                        src={cat.image}
-                                        alt={cat.name}
-                                        fill
-                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                        sizes="(max-width: 448px) 50vw, 200px"
-                                    />
+                                    {cat.image && (
+                                        <Image
+                                            src={cat.image}
+                                            alt={cat.name}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                            sizes="(max-width: 448px) 50vw, 200px"
+                                        />
+                                    )}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 flex flex-col justify-end">
                                         <h4 className="text-white font-bold text-base leading-tight">
                                             {cat.name}
@@ -274,13 +315,15 @@ export default function DiscoverPage() {
                                     : recommended.map((product) => (
                                         <div key={product.id} className="w-36 shrink-0 flex flex-col gap-2">
                                             <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-gray-100">
-                                                <Image
-                                                    src={product.media_urls[0]}
-                                                    alt={product.title}
-                                                    fill
-                                                    className="object-cover"
-                                                    sizes="144px"
-                                                />
+                                                {product.media_urls?.[0] && (
+                                                    <Image
+                                                        src={product.media_urls[0]}
+                                                        alt={product.title}
+                                                        fill
+                                                        className="object-cover"
+                                                        sizes="144px"
+                                                    />
+                                                )}
                                                 <button className="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-slate-400 hover:text-primary transition-colors">
                                                     <span
                                                         className="material-symbols-outlined text-[16px]"
