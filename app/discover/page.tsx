@@ -17,10 +17,9 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MOCK_TRENDING_CATEGORIES } from "@/lib/mock-data";
-import { getProducts, searchProducts } from "@/lib/supabase/queries";
+import { getProducts, searchProducts, getTrendingCategories } from "@/lib/supabase/queries";
 import { CURRENCY } from "@/lib/constants";
-import type { Product } from "@/types";
+import type { Product, Category } from "@/types";
 
 const DISCOVER_PILLS = [
     { id: "all", label: "All", hasDropdown: false },
@@ -48,12 +47,17 @@ export default function DiscoverPage() {
     const [recommended, setRecommended] = useState<Product[]>([]);
     const [searchResults, setSearchResults] = useState<Product[] | null>(null);
     const [loading, setLoading] = useState(true);
+    const [trendingCategories, setTrendingCategories] = useState<Category[]>([]);
 
-    // Fetch recommended products from DB
+    // Fetch recommended products and trending categories from DB
     useEffect(() => {
         setLoading(true);
-        getProducts({ limit: 4, activeOnly: true, tag: "trending" }).then(({ data }) => {
-            setRecommended((data as Product[]) ?? []);
+        Promise.all([
+            getProducts({ limit: 4, activeOnly: true, tag: "trending" }),
+            getTrendingCategories()
+        ]).then(([productsRes, categoriesRes]) => {
+            setRecommended((productsRes.data as Product[]) ?? []);
+            setTrendingCategories((categoriesRes.data as Category[]) ?? []);
             setLoading(false);
         });
     }, []);
@@ -207,21 +211,23 @@ export default function DiscoverPage() {
                                 ))}
                             </div>
 
-                            {/* Dropdown Menu */}
+                            {/* Dropdown Menu (Horizontal Scroll) */}
                             {openDropdown && (
-                                <div className="absolute top-10 left-4 z-30 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 p-2 min-w-[160px] flex flex-col gap-1">
-                                    {FILTER_OPTIONS[openDropdown as keyof typeof FILTER_OPTIONS]?.map(option => (
-                                        <button
-                                            key={option}
-                                            onClick={() => {
-                                                setSearchQuery(option);
-                                                setOpenDropdown(null);
-                                            }}
-                                            className="text-left px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
-                                        >
-                                            {option}
-                                        </button>
-                                    ))}
+                                <div className="w-full bg-slate-50 dark:bg-slate-800/50 border-y border-slate-100 dark:border-slate-800 py-3 mb-2 animate-in slide-in-from-top-2 duration-200">
+                                    <div className="flex gap-2 px-4 overflow-x-auto no-scrollbar w-full">
+                                        {FILTER_OPTIONS[openDropdown as keyof typeof FILTER_OPTIONS]?.map(option => (
+                                            <button
+                                                key={option}
+                                                onClick={() => {
+                                                    setSearchQuery(option);
+                                                    setOpenDropdown(null);
+                                                }}
+                                                className="shrink-0 text-sm font-medium px-4 py-2 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg shadow-sm border border-slate-100 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 active:scale-95 transition-all"
+                                            >
+                                                {option}
+                                            </button>
+                                        ))}
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -271,14 +277,15 @@ export default function DiscoverPage() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-3 px-4 pb-6">
-                            {MOCK_TRENDING_CATEGORIES.map((cat) => (
-                                <div
+                            {trendingCategories.map((cat) => (
+                                <Link
+                                    href={`/discover?category=${cat.id}`}
                                     key={cat.id}
-                                    className="group relative overflow-hidden rounded-xl h-48 w-full shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                                    className="group relative overflow-hidden rounded-xl h-48 w-full shadow-sm hover:shadow-md transition-shadow cursor-pointer block"
                                 >
-                                    {cat.image && (
+                                    {cat.image_url && (
                                         <Image
-                                            src={cat.image}
+                                            src={cat.image_url}
                                             alt={cat.name}
                                             fill
                                             className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -289,9 +296,11 @@ export default function DiscoverPage() {
                                         <h4 className="text-white font-bold text-base leading-tight">
                                             {cat.name}
                                         </h4>
-                                        <p className="text-white/80 text-xs mt-1">{cat.subtitle}</p>
+                                        {cat.description && (
+                                            <p className="text-white/80 text-xs mt-1 truncate">{cat.description}</p>
+                                        )}
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
 

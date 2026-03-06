@@ -18,6 +18,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useThemeStore } from "@/stores/theme-store";
 import { useAuthStore } from "@/stores/auth-store";
 import { getLikedItems } from "@/lib/supabase/queries";
@@ -28,19 +29,28 @@ import type { Theme, Product } from "@/types";
 /** Account menu items */
 const ACCOUNT_ITEMS = [
     {
+        icon: "receipt_long",
+        title: "Order History",
+        subtitle: "View your past purchases",
+        href: "/profile/orders",
+    },
+    {
         icon: "location_on",
         title: "Saved Addresses",
         subtitle: "Manage shipping locations",
+        href: "#",
     },
     {
         icon: "credit_card",
         title: "Payment Methods",
         subtitle: "Manage payment options",
+        href: "#",
     },
     {
         icon: "notifications",
         title: "Notifications",
         subtitle: "Order updates & promos",
+        href: "#",
     },
 ];
 
@@ -489,34 +499,43 @@ export default function ProfilePage() {
                         Account
                     </h3>
                     <div className="flex flex-col gap-1">
-                        {ACCOUNT_ITEMS.map((item) => (
-                            <button
-                                key={item.title}
-                                className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group w-full text-left"
-                            >
-                                <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-                                    <span className="material-symbols-outlined text-[20px]">
-                                        {item.icon}
-                                    </span>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-2">
-                                        <p className="text-sm font-bold text-slate-900 dark:text-white">
-                                            {item.title}
-                                        </p>
-                                        <span className="text-[9px] font-bold bg-primary/10 text-primary px-1.5 py-0.5 rounded-full">
-                                            Soon
+                        {ACCOUNT_ITEMS.map((item) => {
+                            const isLink = item.href && item.href !== "#";
+                            const Wrapper = isLink ? Link : "button";
+                            const wrapperProps = isLink ? { href: item.href } : {};
+
+                            return (
+                                <Wrapper
+                                    key={item.title}
+                                    {...wrapperProps as any}
+                                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group w-full text-left"
+                                >
+                                    <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                                        <span className="material-symbols-outlined text-[20px]">
+                                            {item.icon}
                                         </span>
                                     </div>
-                                    <p className="text-xs text-slate-500 dark:text-slate-400">
-                                        {item.subtitle}
-                                    </p>
-                                </div>
-                                <span className="material-symbols-outlined text-slate-300 text-[20px]">
-                                    chevron_right
-                                </span>
-                            </button>
-                        ))}
+                                    <div className="flex-1">
+                                        <div className="flex items-center gap-2">
+                                            <p className="text-sm font-bold text-slate-900 dark:text-white">
+                                                {item.title}
+                                            </p>
+                                            {!isLink && (
+                                                <span className="text-[9px] font-bold bg-primary/10 text-primary px-1.5 py-0.5 rounded-full">
+                                                    Soon
+                                                </span>
+                                            )}
+                                        </div>
+                                        <p className="text-xs text-slate-500 dark:text-slate-400">
+                                            {item.subtitle}
+                                        </p>
+                                    </div>
+                                    <span className="material-symbols-outlined text-slate-300 text-[20px]">
+                                        chevron_right
+                                    </span>
+                                </Wrapper>
+                            );
+                        })}
                     </div>
                 </div>
 

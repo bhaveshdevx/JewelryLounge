@@ -72,14 +72,23 @@ let fetchProfileInFlight: string | null = null;
 
 // Check if you are running locally or on Vercel
 const getURL = () => {
+    // If running in browser, ALWAYS use the current origin
+    // This perfectly handles localhost vs vercel vs preview deployments
+    if (typeof window !== 'undefined') {
+        return window.location.origin;
+    }
+
+    // Fallback for SSR
     let url =
         process?.env?.NEXT_PUBLIC_SITE_URL ?? // Set this to your Vercel URL in production
         process?.env?.NEXT_PUBLIC_VERCEL_URL ?? // Automatically set by Vercel
-        'http://localhost:3000/';
+        'http://localhost:3000';
 
-    // Make sure it includes `https://`
+    // Make sure to include `https://` when not localhost
     url = url.startsWith('http') ? url : `https://${url}`;
-    return url;
+
+    // Remove trailing slash if present
+    return url.endsWith('/') ? url.slice(0, -1) : url;
 }
 
 export const useAuthStore = create<AuthState>()((set, get) => ({

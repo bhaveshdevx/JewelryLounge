@@ -82,7 +82,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${plusJakartaSans.variable} font-sans antialiased bg-[#f8f6f7] dark:bg-[#221019] selection:bg-primary selection:text-white`}
+        className={`${plusJakartaSans.variable} font-sans antialiased selection:bg-primary selection:text-white`}
       >
         <ThemeProvider>
           <AuthProvider>

@@ -146,6 +146,37 @@ export async function searchProducts(query: string) {
 
 
 // ============================================================
+// Categories
+// ============================================================
+
+/**
+ * Fetch all categories.
+ *
+ * @example
+ *   const { data, error } = await getCategories();
+ */
+export async function getCategories() {
+    return supabase
+        .from("categories")
+        .select("*")
+        .order("name", { ascending: true });
+}
+
+/**
+ * Fetch top trending categories (limit 4).
+ * Assuming we have a way to identify trending, or just fetching top 4.
+ *
+ * @example
+ *   const { data, error } = await getTrendingCategories();
+ */
+export async function getTrendingCategories() {
+    return supabase
+        .from("categories")
+        .select("*")
+        .limit(4);
+}
+
+// ============================================================
 // Profiles
 // ============================================================
 

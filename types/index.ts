@@ -218,5 +218,8 @@ export interface Category {
     slug: string;
 
     /** Thumbnail image URL for the story bubble */
-    image: string;
+    image_url?: string;
+
+    /** Optional description */
+    description?: string;
 }
