@@ -38,7 +38,7 @@ export function BottomNav() {
     }, []);
 
     return (
-        <nav className="fixed bottom-0 left-0 right-0 z-50 flex w-full max-w-md mx-auto items-center justify-around border-t border-slate-100 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg px-2 pb-5 pt-3 h-16 shadow-[0_-5px_10px_rgba(0,0,0,0.02)]">
+        <nav className="fixed bottom-0 left-0 right-0 z-50 flex w-full max-w-md mx-auto items-center justify-around border-t border-slate-100 dark:border-slate-800 bg-background/95 dark:bg-slate-900/95 backdrop-blur-lg px-2 pb-5 pt-3 h-16 shadow-[0_-5px_10px_rgba(0,0,0,0.02)]">
             {NAV_TABS.map((tab) => {
                 const isActive =
                     tab.href === "/"

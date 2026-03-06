@@ -22,7 +22,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
     // Admin routes — full-width, no shop header/nav
     if (isAdmin) {
         return (
-            <div className="min-h-screen w-full bg-white dark:bg-slate-900">
+            <div className="min-h-screen w-full bg-transparent">
                 {children}
             </div>
         );
@@ -30,7 +30,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
 
     // Shop routes — mobile-first centered container
     return (
-        <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-slate-900 shadow-2xl">
+        <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-transparent shadow-2xl">
             {/* Header — auto-hides on scroll */}
             <Header />
 

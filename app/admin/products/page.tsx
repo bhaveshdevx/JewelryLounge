@@ -109,7 +109,7 @@ export default function AdminProductsPage() {
             </div>
 
             {/* Search */}
-            <div className="flex items-center bg-white dark:bg-slate-900 rounded-xl shadow-sm h-10 lg:h-11 px-3 gap-2 lg:max-w-md">
+            <div className="flex items-center bg-white dark:bg-slate-900 rounded-xl shadow-sm h-10 lg:h-11 px-3 gap-2 lg:max-w-md overflow-x-auto no-scrollbar">
                 <span className="material-symbols-outlined text-slate-400 text-[18px]">
                     search
                 </span>

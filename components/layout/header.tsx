@@ -42,7 +42,7 @@ export function Header() {
             }}
             animate={hidden ? "hidden" : "visible"}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="sticky top-0 z-50 flex items-center justify-between bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 py-2 border-b border-slate-100 dark:border-slate-800 h-12"
+            className="sticky top-0 z-50 flex items-center justify-between bg-background/95 dark:bg-slate-900/95 backdrop-blur-md px-4 py-2 border-b border-slate-100 dark:border-slate-800 h-12"
         >
             {/* Logo */}
             <Link href="/" className="flex items-center text-primary">
